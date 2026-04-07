@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Seraya — Undangan Digital Elegan | Semua Kita Rayakan</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Seraya — Undangan digital elegan & praktis untuk pernikahan, lamaran, aqiqah, ulang tahun, dan momen spesial lainnya. Semua Kita Rayakan! Pesan via WhatsApp.">
+  <meta name="keywords" content="undangan digital, undangan online, undangan pernikahan, undangan elegan, Seraya, semua kita rayakan, undangan WA, undangan WhatsApp">
+  <meta name="author" content="Seraya">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://seraya.id">
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Seraya — Undangan Digital Elegan | Semua Kita Rayakan">
+  <meta property="og:description" content="Buat undangan digital cantik & praktis untuk setiap momen spesialmu. Semua Kita Rayakan bersama Seraya!">
+  <meta property="og:image" content="logo-front.png">
+  <meta property="og:url" content="https://seraya.id">
+  <meta property="og:site_name" content="Seraya">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Seraya — Undangan Digital Elegan">
+  <meta name="twitter:description" content="Semua Kita Rayakan! Undangan digital elegan & praktis via WhatsApp.">
+  <meta name="twitter:image" content="logo-front.png">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <!-- Google Fonts: Quicksand -->
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- =============================================
+       Floating WhatsApp Button
+       ============================================= -->
+  <a href="https://wa.me/6281234567890?text=Halo%20saya%20tertarik%20membuat%20undangan%20digital%20di%20Seraya"
+    target="_blank" class="wa-float" aria-label="Chat via WhatsApp">
+    <i class="fab fa-whatsapp text-white text-3xl"></i>
+  </a>
+
+
+  <!-- =============================================
+       Header Navigation
+       ============================================= -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm transition-all duration-300">
+    <div class="container mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
+
+      <!-- Logo -->
+      <a href="#home" class="flex items-center gap-2 hover:opacity-80 transition">
+        <img src="logo-removebg-preview.png" alt="Seraya Logo" class="h-8 w-auto">
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="#home" class="text-gray-700 hover:text-pink-500 font-medium transition">Beranda</a>
+        <a href="#gallery" class="text-gray-700 hover:text-pink-500 font-medium transition">Koleksi</a>
+        <a href="#paket" class="text-gray-700 hover:text-pink-500 font-medium transition">Paket</a>
+        <a href="#faq" class="text-gray-700 hover:text-pink-500 font-medium transition">FAQ</a>
+      </nav>
+
+      <!-- CTA WhatsApp (Desktop) -->
+      <a href="https://wa.me/6281234567890?text=Halo%20saya%20ingin%20konsultasi%20undangan%20di%20Seraya" target="_blank"
+        class="hidden md:inline-flex items-center gap-2 bg-pink-500 hover:bg-pink-600
+                text-white px-5 py-2 rounded-full text-sm font-semibold transition shadow-md">
+        <i class="fab fa-whatsapp"></i> Chat WA
+      </a>
+
+      <!-- Mobile Menu Button -->
+      <button id="menuBtn" class="md:hidden text-pink-500 text-2xl focus:outline-none"
+        aria-label="Toggle navigation menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Menu (hidden by default) -->
+    <div id="mobileMenu" class="mobile-menu md:hidden bg-white border-t border-pink-100">
+      <div class="flex flex-col items-center gap-4 py-4">
+        <a href="#home" class="text-gray-700 hover:text-pink-500 font-medium">Beranda</a>
+        <a href="#gallery" class="text-gray-700 hover:text-pink-500 font-medium">Koleksi</a>
+        <a href="#paket" class="text-gray-700 hover:text-pink-500 font-medium">Paket</a>
+        <a href="#faq" class="text-gray-700 hover:text-pink-500 font-medium">FAQ</a>
+
+        <a href="https://wa.me/6281234567890?text=Halo%20saya%20ingin%20konsultasi%20undangan%20di%20Seraya" target="_blank"
+          class="bg-pink-500 text-white px-6 py-2 rounded-full font-semibold flex items-center gap-2">
+          <i class="fab fa-whatsapp"></i> Chat WA
+        </a>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- =============================================
+       Hero Section
+       ============================================= -->
+  <section id="home" class="relative overflow-hidden px-6 py-16 md:py-24 lg:py-32">
+
+    <!-- Background Decoration -->
+    <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+      <div class="absolute -top-16 -left-16 w-72 h-72 bg-pink-100 rounded-full opacity-40 blur-3xl"></div>
+      <div class="absolute bottom-0 right-0 w-96 h-96 bg-pink-200 rounded-full opacity-30 blur-3xl"></div>
+    </div>
+
+    <div class="container mx-auto relative z-10 flex flex-col lg:flex-row items-center gap-12">
+
+      <!-- Copy -->
+      <div class="flex-1 text-center lg:text-left">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 leading-tight">
+          Undangan Digital Elegan<br>
+          oleh <span class="text-pink-500">Seraya</span>
+        </h1>
+
+        <p class="text-gray-500 text-sm font-medium tracking-widest uppercase mt-2">Semua Kita Rayakan</p>
+
+        <p class="text-gray-600 text-lg md:text-xl mt-6 max-w-xl mx-auto lg:mx-0">
+          Hemat biaya cetak, kirim via WhatsApp dalam 2 menit.
+          Desain cantik, RSVP online, dan pantau tamu dengan mudah.
+        </p>
+
+        <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+          <a href="https://wa.me/6281234567890?text=Halo%20saya%20tertarik%20membuat%20undangan%20digital%20di%20Seraya"
+            target="_blank" class="bg-pink-500 hover:bg-pink-600 text-white font-semibold px-8 py-3
+                    rounded-full shadow-lg transition flex items-center justify-center gap-2">
+            <i class="fab fa-whatsapp text-xl"></i> Buat via WhatsApp
+          </a>
+          <a href="#paket" class="border-2 border-pink-300 text-pink-600 hover:bg-pink-50
+                    px-8 py-3 rounded-full font-semibold transition">
+            Lihat Paket
+          </a>
+        </div>
+
+        <p class="text-sm text-gray-500 mt-6">
+          ⭐ 500+ undangan digital terkirim oleh Seraya • Konsultasi gratis via WA
+        </p>
+      </div>
+
+      <!-- Hero Image / Mockup -->
+      <div class="flex-1 flex justify-center">
+        <div class="relative w-72 md:w-80 lg:w-96">
+          <div class="absolute -top-4 -left-4 w-full h-full bg-pink-200 rounded-3xl rotate-3"></div>
+          <div class="relative bg-white rounded-3xl shadow-2xl overflow-hidden border-4 border-white">
+            <img src="demo.gif" alt="Mockup undangan digital Seraya" class="w-full h-auto">
+            <div
+              class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4 text-white text-center">
+              <i class="fas fa-mobile-alt"></i> Contoh undangan interaktif
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       Gallery / Portfolio
+       ============================================= -->
+  <section id="gallery" class="px-6 py-16 bg-white/50">
+    <div class="container mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">✨ Koleksi Desain Seraya ✨</h2>
+      <p class="text-gray-500 max-w-2xl mx-auto mb-12">
+        Inspirasi undangan digital terbaru — elegan, romantis &amp; modern untuk setiap perayaan.
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Card 1 -->
+        <div class="bg-white rounded-2xl shadow-md overflow-hidden card-hover">
+          <img src="https://placehold.co/400x500/FFD9E6/white?text=Seraya+Romance" alt="Desain Seraya Romance"
+            class="w-full h-64 object-cover">
+          <div class="p-4">
+            <h3 class="font-bold text-pink-600">Seraya Romance</h3>
+            <p class="text-sm text-gray-500">Cocok untuk lamaran &amp; pernikahan</p>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-white rounded-2xl shadow-md overflow-hidden card-hover">
+          <img src="https://placehold.co/400x500/FCE4EC/white?text=Seraya+Elegan" alt="Desain Seraya Elegan"
+            class="w-full h-64 object-cover">
+          <div class="p-4">
+            <h3 class="font-bold text-pink-600">Seraya Elegan</h3>
+            <p class="text-sm text-gray-500">Elegan dengan sentuhan kaligrafi</p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-white rounded-2xl shadow-md overflow-hidden card-hover">
+          <img src="https://placehold.co/400x500/F8BBD0/white?text=Seraya+Party" alt="Desain Seraya Party"
+            class="w-full h-64 object-cover">
+          <div class="p-4">
+            <h3 class="font-bold text-pink-600">Seraya Party</h3>
+            <p class="text-sm text-gray-500">Untuk ulang tahun &amp; baby shower</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-10">
+        <a href="https://wa.me/6281234567890?text=Halo%20saya%20mau%20lihat%20koleksi%20lengkap%20undangan%20Seraya"
+          target="_blank"
+          class="inline-flex items-center gap-2 text-pink-600 font-semibold border-b border-pink-300 hover:text-pink-700">
+          Lihat semua desain <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       Fitur / Keunggulan
+       ============================================= -->
+  <section class="px-6 py-16">
+    <div class="container mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-4">
+        🌷 Kenapa Pilih Seraya?
+      </h2>
+      <p class="text-center text-gray-500 mb-12">Mudah, cepat, dan semua kita rayakan!</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+        <div class="text-center p-5 bg-white rounded-2xl shadow-sm">
+          <i class="fas fa-palette text-pink-500 text-4xl mb-3"></i>
+          <h3 class="font-bold text-lg">Desain Eksklusif</h3>
+          <p class="text-gray-500">50+ tema elegan &amp; bisa custom request</p>
+        </div>
+
+        <div class="text-center p-5 bg-white rounded-2xl shadow-sm">
+          <i class="fab fa-whatsapp text-green-500 text-4xl mb-3"></i>
+          <h3 class="font-bold text-lg">Kirim via WA</h3>
+          <p class="text-gray-500">Link undangan langsung bisa dishare ke tamu</p>
+        </div>
+
+        <div class="text-center p-5 bg-white rounded-2xl shadow-sm">
+          <i class="fas fa-chart-line text-pink-500 text-4xl mb-3"></i>
+          <h3 class="font-bold text-lg">Pantau Tamu</h3>
+          <p class="text-gray-500">Lihat siapa saja yang sudah konfirmasi hadir</p>
+        </div>
+
+        <div class="text-center p-5 bg-white rounded-2xl shadow-sm">
+          <i class="fas fa-clock text-pink-500 text-4xl mb-3"></i>
+          <h3 class="font-bold text-lg">Proses Cepat</h3>
+          <p class="text-gray-500">Selesai 1x24 jam setelah data lengkap</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       Paket Harga
+       ============================================= -->
+  <section id="paket" class="px-6 py-16 bg-gradient-to-b from-white to-pink-50">
+    <div class="container mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+        🌸 Paket Seraya — Semua Kita Rayakan
+      </h2>
+      <p class="text-gray-500 max-w-xl mx-auto mb-12">
+        Harga bersahabat, fitur lengkap, garansi revisi 2x
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+
+        <!-- Paket Basic -->
+        <div class="bg-white rounded-2xl shadow-lg p-6 text-center border-t-8 border-pink-300 card-hover">
+          <h3 class="text-2xl font-bold text-gray-700">Seraya Basic</h3>
+          <p class="text-4xl font-extrabold text-pink-500 mt-4">Rp99k</p>
+
+          <ul class="mt-6 space-y-3 text-gray-600">
+            <li><i class="fas fa-check-circle text-pink-400 mr-2"></i> 1 desain tema pilihan</li>
+            <li><i class="fas fa-check-circle text-pink-400 mr-2"></i> Kirim link undangan</li>
+            <li><i class="fas fa-check-circle text-pink-400 mr-2"></i> Musik latar otomatis</li>
+            <li><i class="fas fa-times-circle text-gray-300 mr-2"></i> Tidak ada RSVP online</li>
+          </ul>
+
+          <a href="https://wa.me/6281234567890?text=Halo%20saya%20tertarik%20paket%20SERAYA%20BASIC%20Rp99k"
+            target="_blank"
+            class="mt-8 inline-block w-full bg-pink-100 text-pink-600 font-semibold py-2 rounded-full hover:bg-pink-200 transition">
+            Pilih via WA →
+          </a>
+        </div>
+
+        <!-- Paket Pro (Favorit) -->
+        <div class="bg-white rounded-2xl shadow-xl p-6 text-center border-t-8 border-pink-500
+                    relative card-hover transform md:scale-105">
+          <div class="absolute top-0 right-6 bg-pink-500 text-white text-xs px-3 py-1 rounded-b-lg">
+            Paling Laris
+          </div>
+
+          <h3 class="text-2xl font-bold text-gray-700">Seraya Pro</h3>
+          <p class="text-4xl font-extrabold text-pink-500 mt-4">Rp199k</p>
+
+          <ul class="mt-6 space-y-3 text-gray-600">
+            <li><i class="fas fa-check-circle text-pink-400 mr-2"></i> 3 pilihan desain eksklusif</li>
+            <li><i class="fas fa-check-circle text-pink-400 mr-2"></i> RSVP online &amp; ucapan tamu</li>
+            <li><i class="fas fa-check-circle text-pink-400 mr-2"></i> Google Maps lokasi acara</li>
+            <li><i class="fas fa-check-circle text-pink-400 mr-2"></i> Galeri foto &amp; video</li>
+          </ul>
+
+          <a href="https://wa.me/6281234567890?text=Halo%20saya%20tertarik%20paket%20SERAYA%20PRO%20Rp199k"
+            target="_blank"
+            class="mt-8 inline-block w-full bg-pink-500 text-white font-semibold py-2 rounded-full hover:bg-pink-600 transition">
+            Pilih Paket Pro →
+          </a>
+        </div>
+
+        <!-- Paket Premium -->
+        <div class="bg-white rounded-2xl shadow-lg p-6 text-center border-t-8 border-pink-300 card-hover">
+          <h3 class="text-2xl font-bold text-gray-700">Seraya Premium</h3>
+          <p class="text-4xl font-extrabold text-pink-500 mt-4">Rp349k</p>
+
+          <ul class="mt-6 space-y-3 text-gray-600">
+            <li><i class="fas fa-check-circle text-pink-400 mr-2"></i> Unlimited revisi desain</li>
+            <li><i class="fas fa-check-circle text-pink-400 mr-2"></i> Custom ilustrasi &amp; personalisasi nama</li>
+            <li><i class="fas fa-check-circle text-pink-400 mr-2"></i> Domain khusus (yourname.undangan.com)</li>
+            <li><i class="fas fa-check-circle text-pink-400 mr-2"></i> Support prioritas 24/7</li>
+          </ul>
+
+          <a href="https://wa.me/6281234567890?text=Halo%20saya%20tertarik%20paket%20SERAYA%20PREMIUM%20Rp349k"
+            target="_blank"
+            class="mt-8 inline-block w-full bg-pink-100 text-pink-600 font-semibold py-2 rounded-full hover:bg-pink-200 transition">
+            Pilih via WA →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       Demo / Preview
+       ============================================= -->
+  <section class="px-6 py-16 bg-white">
+    <div class="container mx-auto text-center">
+      <h2 class="text-3xl font-bold text-gray-800">🎬 Lihat Demo Undangan</h2>
+      <p class="text-gray-500 mt-2 mb-8">Coba rasakan pengalaman tamu undanganmu</p>
+
+      <div class="max-w-2xl mx-auto bg-pink-50 rounded-2xl p-4 shadow-inner">
+        <div class="relative bg-white rounded-xl overflow-hidden shadow-md">
+          <img src="https://placehold.co/800x500/FCE4EC/white?text=Video+Preview+Undangan+Seraya+Interaktif"
+            alt="Demo preview undangan Seraya" class="w-full">
+          <div
+            class="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/40 transition cursor-pointer">
+            <i class="fas fa-play-circle text-white text-6xl drop-shadow-lg"></i>
+          </div>
+        </div>
+        <p class="text-sm text-gray-500 mt-3">
+          *Demo interaktif (klik gambar untuk lihat simulasi via WA)
+        </p>
+      </div>
+
+      <div class="mt-6">
+        <a href="https://wa.me/6281234567890?text=Halo%20saya%20mau%20minta%20link%20demo%20undangan%20Seraya"
+          target="_blank" class="text-pink-500 font-medium underline">
+          Atau minta demo via WhatsApp →
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       Testimoni
+       ============================================= -->
+  <section class="px-6 py-16 bg-pink-50/40">
+    <div class="container mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">💬 Apa Kata Mereka?</h2>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+
+        <!-- Testimoni 1 -->
+        <div class="bg-white p-6 rounded-2xl shadow-md">
+          <div class="flex gap-1 text-yellow-400 mb-3">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="italic">
+            "Desainnya cantik banget, tamu pada suka. Order via WA gampang banget!"
+          </p>
+          <h4 class="font-bold mt-4">— Amanda, Pernikahan</h4>
+        </div>
+
+        <!-- Testimoni 2 -->
+        <div class="bg-white p-6 rounded-2xl shadow-md">
+          <div class="flex gap-1 text-yellow-400 mb-3">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="italic">
+            "Proses cuma 1 hari, langsung dapat link. Fitur RSVP sangat membantu."
+          </p>
+          <h4 class="font-bold mt-4">— Rizky, Aqiqah</h4>
+        </div>
+
+        <!-- Testimoni 3 -->
+        <div class="bg-white p-6 rounded-2xl shadow-md">
+          <div class="flex gap-1 text-yellow-400 mb-3">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="italic">
+            "Harga terjangkau, respon cepat. Recommended untuk undangan digital."
+          </p>
+          <h4 class="font-bold mt-4">— Siti, Ulang Tahun</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       Cara Order + FAQ
+       ============================================= -->
+  <section id="faq" class="px-6 py-16">
+    <div class="container mx-auto max-w-5xl">
+      <div class="grid md:grid-cols-2 gap-10">
+
+        <!-- Cara Order -->
+        <div>
+          <h2 class="text-2xl font-bold text-gray-800 mb-5 flex items-center gap-2">
+            <i class="fas fa-shopping-cart text-pink-500"></i> Cara Order (3 Menit)
+          </h2>
+
+          <ol class="space-y-4">
+            <li class="flex gap-3">
+              <span
+                class="bg-pink-100 text-pink-600 font-bold w-7 h-7 rounded-full flex items-center justify-center shrink-0">1</span>
+              Pilih paket favorit &amp; klik tombol "Pilih via WA"
+            </li>
+            <li class="flex gap-3">
+              <span
+                class="bg-pink-100 text-pink-600 font-bold w-7 h-7 rounded-full flex items-center justify-center shrink-0">2</span>
+              Chat WhatsApp, kirim data (nama, tanggal acara, tema)
+            </li>
+            <li class="flex gap-3">
+              <span
+                class="bg-pink-100 text-pink-600 font-bold w-7 h-7 rounded-full flex items-center justify-center shrink-0">3</span>
+              Kami kirim draft desain dalam 6 jam, revisi jika perlu
+            </li>
+            <li class="flex gap-3">
+              <span
+                class="bg-pink-100 text-pink-600 font-bold w-7 h-7 rounded-full flex items-center justify-center shrink-0">4</span>
+              Setuju, bayar via transfer, dapatkan link undangan jadi!
+            </li>
+          </ol>
+
+          <a href="https://wa.me/6281234567890?text=Halo%20saya%20mau%20konsultasi%20order%20undangan%20digital"
+            target="_blank"
+            class="inline-flex items-center gap-2 bg-pink-500 text-white px-6 py-2 rounded-full mt-6 hover:bg-pink-600 transition">
+            <i class="fab fa-whatsapp"></i> Konsultasi Gratis
+          </a>
+        </div>
+
+        <!-- FAQ -->
+        <div>
+          <h2 class="text-2xl font-bold text-gray-800 mb-5 flex items-center gap-2">
+            <i class="fas fa-question-circle text-pink-500"></i> FAQ
+          </h2>
+
+          <div class="space-y-4">
+            <div class="bg-white p-4 rounded-xl shadow-sm">
+              <h3 class="font-semibold">Apakah bisa revisi desain?</h3>
+              <p class="text-gray-600 text-sm">Ya, semua paket minimal 1x revisi, Premium unlimited revisi.</p>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl shadow-sm">
+              <h3 class="font-semibold">Berapa lama pengerjaan?</h3>
+              <p class="text-gray-600 text-sm">1x24 jam setelah data &amp; DP diterima.</p>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl shadow-sm">
+              <h3 class="font-semibold">Apakah undangan bisa dibagikan ke banyak tamu?</h3>
+              <p class="text-gray-600 text-sm">Tentu, link undangan bisa dishare ke unlimited tamu via WA, IG, dll.</p>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl shadow-sm">
+              <h3 class="font-semibold">Bagaimana cara pembayaran?</h3>
+              <p class="text-gray-600 text-sm">Transfer bank (BCA/BNI) atau QRIS, akan diinfokan via WA setelah order.
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-6 text-center md:text-left">
+            <a href="https://wa.me/6281234567890?text=Tanya%20lebih%20lanjut%20soal%20undangan%20Seraya" target="_blank"
+              class="text-pink-500 font-medium hover:underline">
+              Masih ada pertanyaan? Chat WA saja →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       CTA Final
+       ============================================= -->
+  <section class="bg-gradient-to-r from-pink-400 to-pink-500 text-white py-16 px-6 text-center">
+    <div class="container mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold">Siap Merayakan Momen Spesialmu?</h2>
+      <p class="text-pink-100 text-lg mt-2 mb-6">
+        Seraya — Semua Kita Rayakan. Order via WhatsApp sekarang!
+      </p>
+      <a href="https://wa.me/6281234567890?text=Halo%20saya%20ingin%20order%20undangan%20digital%20Seraya%20sekarang"
+        target="_blank"
+        class="inline-flex items-center gap-3 bg-white text-pink-600 font-bold px-8 py-4 rounded-full shadow-xl hover:shadow-2xl transition text-xl">
+        <i class="fab fa-whatsapp fa-lg"></i> Order Sekarang via WA
+      </a>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       Footer
+       ============================================= -->
+  <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm">
+    <div class="container mx-auto">
+      <p>
+        &copy; 2025 Seraya — Semua Kita Rayakan. All rights reserved. |
+        <a href="#" class="hover:text-pink-300">Kebijakan Privasi</a> |
+        Hubungi: <a href="https://wa.me/6281234567890" class="hover:text-pink-300">+62 812-3456-7890</a>
+      </p>
+      <p class="mt-2 text-gray-400">💖 Seraya — Semua Kita Rayakan 💖</p>
+    </div>
+  </footer>
+
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+
+</body>
+
+</html>
