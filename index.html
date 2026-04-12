@@ -164,54 +164,34 @@
 
 
   <!-- =============================================
-       Gallery / Portfolio
+       Koleksi Unggulan — Teaser
        ============================================= -->
-  <section id="gallery" class="px-6 py-16 bg-white/50">
-    <div class="container mx-auto text-center">
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">✨ Koleksi Desain Seraya ✨</h2>
-      <p class="text-gray-500 max-w-2xl mx-auto mb-12">
-        Inspirasi undangan digital terbaru — elegan, romantis &amp; modern untuk setiap perayaan.
-      </p>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-        <!-- Card 1 -->
-        <div class="bg-white rounded-2xl shadow-md overflow-hidden card-hover">
-          <img src="https://placehold.co/400x500/FFD9E6/white?text=Seraya+Romance" alt="Desain Seraya Romance"
-            class="w-full h-64 object-cover">
-          <div class="p-4">
-            <h3 class="font-bold text-pink-600">Seraya Romance</h3>
-            <p class="text-sm text-gray-500">Cocok untuk lamaran &amp; pernikahan</p>
-          </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="bg-white rounded-2xl shadow-md overflow-hidden card-hover">
-          <img src="https://placehold.co/400x500/FCE4EC/white?text=Seraya+Elegan" alt="Desain Seraya Elegan"
-            class="w-full h-64 object-cover">
-          <div class="p-4">
-            <h3 class="font-bold text-pink-600">Seraya Elegan</h3>
-            <p class="text-sm text-gray-500">Elegan dengan sentuhan kaligrafi</p>
-          </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="bg-white rounded-2xl shadow-md overflow-hidden card-hover">
-          <img src="https://placehold.co/400x500/F8BBD0/white?text=Seraya+Party" alt="Desain Seraya Party"
-            class="w-full h-64 object-cover">
-          <div class="p-4">
-            <h3 class="font-bold text-pink-600">Seraya Party</h3>
-            <p class="text-sm text-gray-500">Untuk ulang tahun &amp; baby shower</p>
-          </div>
-        </div>
+  <section id="gallery" class="px-6 py-20 bg-white/50">
+    <div class="container mx-auto">
+      <div class="text-center mb-12">
+        <span class="teaser-hero-badge">
+          <i class="fas fa-images mr-1"></i> 500+ Tema Tersedia
+        </span>
+        <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4 mt-4">✨ Koleksi Unggulan Seraya ✨</h2>
+        <p class="text-gray-500 max-w-2xl mx-auto text-lg">
+          Temukan desain sempurna untuk setiap perayaan Anda.
+          <span class="text-pink-500 font-semibold">Semua Kita Rayakan!</span>
+        </p>
       </div>
 
-      <div class="mt-10">
-        <a href="https://wa.me/6281234567890?text=Halo%20saya%20mau%20lihat%20koleksi%20lengkap%20undangan%20Seraya"
-          target="_blank"
-          class="inline-flex items-center gap-2 text-pink-600 font-semibold border-b border-pink-300 hover:text-pink-700">
-          Lihat semua desain <i class="fas fa-arrow-right"></i>
+      <!-- Teaser Grid (6 cards, populated by JS) -->
+      <div id="teaserGallery" class="grid grid-cols-2 sm:grid-cols-3 gap-5 max-w-4xl mx-auto"></div>
+
+      <!-- CTA to full catalog -->
+      <div class="text-center mt-14">
+        <a href="themes.html" class="teaser-see-all-btn">
+          <i class="fas fa-th-large"></i>
+          Jelajahi Semua 500+ Koleksi
+          <i class="fas fa-arrow-right"></i>
         </a>
+        <p class="text-gray-400 text-sm mt-4">
+          Lengkap dengan filter acara, gaya desain &amp; preview instan
+        </p>
       </div>
     </div>
   </section>
@@ -545,6 +525,7 @@
 
 
   <!-- Scripts -->
+  <script src="themes-data.js"></script>
   <script src="script.js"></script>
 
 </body>
