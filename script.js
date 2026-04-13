@@ -21,6 +21,7 @@ const galleryState = {
 document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initSmoothScroll();
+  initHeroMedia();
   initSakuraPetals();
   initModal(); // inject modal DOM into body
 
@@ -74,6 +75,49 @@ function initSmoothScroll() {
 }
 
 // =============================================
+// Hero Media
+// =============================================
+function initHeroMedia() {
+  const heroVideo = document.querySelector('.editorial-hero-video');
+  if (!heroVideo) return;
+
+  const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const saveDataEnabled = Boolean(connection && connection.saveData);
+  const slowConnection = Boolean(connection && /2g/.test(connection.effectiveType || ''));
+  const smallScreen = window.innerWidth < 768;
+
+  if (prefersReducedMotion || saveDataEnabled || slowConnection || smallScreen) {
+    heroVideo.removeAttribute('autoplay');
+    heroVideo.pause();
+    return;
+  }
+
+  const playVideo = () => {
+    heroVideo.setAttribute('autoplay', '');
+    const playPromise = heroVideo.play();
+    if (playPromise && typeof playPromise.catch === 'function') {
+      playPromise.catch(() => {});
+    }
+  };
+
+  if (!('IntersectionObserver' in window)) {
+    playVideo();
+    return;
+  }
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      playVideo();
+      observer.disconnect();
+    });
+  }, { threshold: 0.35 });
+
+  observer.observe(heroVideo);
+}
+
+// =============================================
 // Sakura Petal Rain
 // =============================================
 const PETAL_CONFIG = {
@@ -123,7 +167,7 @@ function initModal() {
 
       <!-- Close button -->
       <button class="modal-close-btn" id="modalCloseBtn" aria-label="Tutup preview">
-        <i class="fas fa-times"></i>
+        <span aria-hidden="true">X</span>
       </button>
 
       <div class="modal-body">
@@ -145,8 +189,7 @@ function initModal() {
             <img id="modalThumbImg" src="" alt="Preview tema" class="phone-preview-img" style="display:none;">
           </div>
           <p id="modalPreviewHint" class="phone-scroll-hint">
-            <i class="fas fa-hand-pointer" style="font-size:0.65rem;"></i>
-            Scroll & interaksi langsung di preview
+            Drag dan scroll preview langsung di popup
           </p>
         </div>
 
@@ -156,7 +199,7 @@ function initModal() {
 
           <h2 id="modalThemeName" class="modal-theme-name">—</h2>
 
-          <div class="modal-usage-row">
+          <div id="modalUsageRow" class="modal-usage-row">
             <span id="modalUsage" class="modal-usage-text"></span>
           </div>
 
@@ -169,11 +212,11 @@ function initModal() {
           </p>
 
           <a id="modalWaBtn" href="#" target="_blank" class="modal-btn-primary">
-            <i class="fab fa-whatsapp"></i> Pesan Tema Ini via WA
+            Pesan Tema Ini via WA
           </a>
 
           <a id="modalFallbackLink" href="#" target="_blank" class="modal-btn-secondary modal-btn-hidden">
-            <i class="fas fa-external-link-alt"></i> Buka Demo di Tab Baru
+            Buka Demo di Tab Baru
           </a>
 
           <p id="modalNoteText" class="modal-note-text">
@@ -205,7 +248,8 @@ function openPreviewModal(theme) {
   if (!modal) return;
 
   // Populate info
-  const usageNum  = parseInt(theme.usage) || 0;
+  const usageText = typeof theme.usage === 'string' ? theme.usage.trim() : '';
+  const usageNum  = parseInt(usageText, 10) || 0;
   const heatIcon  = usageNum >= 100 ? '🔥' : usageNum >= 50 ? '⭐' : '💌';
   const mainType  = theme.acara[0] || theme.tipe[0] || 'Design';
   const color     = getPlaceholderColor(mainType);
@@ -213,7 +257,8 @@ function openPreviewModal(theme) {
     || `https://placehold.co/400x600/${color}/880E4F?text=${encodeURIComponent(theme.name)}`;
 
   document.getElementById('modalThemeName').textContent = theme.name;
-  document.getElementById('modalUsage').innerHTML       = `${heatIcon} ${theme.usage}`;
+  document.getElementById('modalUsage').textContent     = usageText ? `${heatIcon} ${usageText}` : '';
+  document.getElementById('modalUsageRow').style.display = usageText ? '' : 'none';
 
   const allBadges = [...theme.acara, ...theme.tipe];
   document.getElementById('modalBadges').innerHTML = allBadges
@@ -237,7 +282,7 @@ function openPreviewModal(theme) {
   fallbackLink.classList.add('modal-btn-hidden');
   fallbackLink.href       = theme.url;
   noteText.textContent    = 'Preview tampil langsung di popup ini, jadi pengunjung tidak perlu melihat URL demo.';
-  previewHint.innerHTML   = '<i class="fas fa-hand-pointer" style="font-size:0.65rem;"></i> Scroll & interaksi langsung di preview';
+  previewHint.textContent = 'Drag dan scroll preview langsung di popup';
 
   // Prepare fallback thumbnail
   thumbImg.src = thumbUrl;
@@ -250,7 +295,7 @@ function openPreviewModal(theme) {
     thumbImg.style.display = 'block';
     loader.style.display   = 'none';
     noteText.textContent   = 'Demo dari provider ini memang tidak bisa ditampilkan langsung di iframe, jadi kami tampilkan preview visualnya di modal.';
-    previewHint.innerHTML  = '<i class="fas fa-image" style="font-size:0.65rem;"></i> Preview visual ditampilkan langsung di popup';
+    previewHint.textContent = 'Preview visual ditampilkan langsung di popup';
     fallbackLink.classList.remove('modal-btn-hidden');
   } else {
     // Load iframe with theme URL
@@ -269,7 +314,7 @@ function openPreviewModal(theme) {
         loader.style.display   = 'none';
         fallbackLink.classList.remove('modal-btn-hidden');
         noteText.textContent   = 'Browser menahan embed demo ini. Tombol cadangan di bawah bisa membuka demonya tanpa menampilkan URL di area preview.';
-        previewHint.innerHTML  = '<i class="fas fa-image" style="font-size:0.65rem;"></i> Preview visual ditampilkan langsung di popup';
+        previewHint.textContent = 'Preview visual ditampilkan langsung di popup';
       }
     }, 8000);
 
@@ -311,32 +356,27 @@ function isKnownIframeBlockedUrl(url) {
 // Teaser Gallery — index.html (6 picked themes)
 // =============================================
 function initTeaserGallery() {
-  if (typeof THEMES_DATA === 'undefined') return;
+  const teaserData = window.FEATURED_THEMES || window.THEMES_DATA;
+  if (!Array.isArray(teaserData) || teaserData.length === 0) return;
   const teaserGallery = document.getElementById('teaserGallery');
   if (!teaserGallery) return;
 
-  // Pick 6 varied themes across different acara categories
-  const pick = (cat, n) => THEMES_DATA.filter(t => t.acara.includes(cat)).slice(0, n);
-  const pickAny = n => THEMES_DATA.filter(t => t.thumbnail).slice(0, n);
+  const randomizedThemes = shuffleArray(teaserData).slice(0, Math.min(TEASER_COUNT, teaserData.length));
 
-  const pernikahan = pick('Pernikahan', 2);
-  const aqiqah     = pick('Aqiqah', 1);
-  const ultah      = pick('Ultah', 1);
-  const khitan     = pick('Khitan', 1);
-  const other      = THEMES_DATA.filter(t =>
-    !t.acara.includes('Pernikahan') &&
-    !t.acara.includes('Aqiqah') &&
-    !t.acara.includes('Ultah') &&
-    !t.acara.includes('Khitan') &&
-    t.thumbnail
-  ).slice(0, 1);
+  const fragment = document.createDocumentFragment();
+  randomizedThemes.forEach(theme => {
+    fragment.appendChild(createThemeCard(theme));
+  });
+  teaserGallery.appendChild(fragment);
+}
 
-  let featured = [...pernikahan, ...aqiqah, ...ultah, ...khitan, ...other].slice(0, TEASER_COUNT);
-  if (featured.length < TEASER_COUNT) {
-    featured = pickAny(TEASER_COUNT);
+function shuffleArray(items) {
+  const shuffled = [...items];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const randomIndex = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[i]];
   }
-
-  featured.forEach(theme => teaserGallery.appendChild(createThemeCard(theme)));
+  return shuffled;
 }
 
 // =============================================
@@ -416,7 +456,9 @@ function updateGallery(append = false) {
     loadMoreContainer?.classList.add('hidden');
   } else {
     emptyState?.classList.add('hidden');
-    pagedThemes.forEach(theme => themeGallery.appendChild(createThemeCard(theme)));
+    const fragment = document.createDocumentFragment();
+    pagedThemes.forEach(theme => fragment.appendChild(createThemeCard(theme)));
+    themeGallery.appendChild(fragment);
 
     if (loadMoreContainer) {
       end >= filteredThemes.length
@@ -455,13 +497,19 @@ function createThemeCard(theme) {
   const waMsg    = `Halo%20Seraya%2C%20saya%20tertarik%20dengan%20tema%20*${encodeURIComponent(theme.name)}*`;
   const waLink   = `https://wa.me/6281234567890?text=${waMsg}`;
 
-  const usageNum = parseInt(theme.usage) || 0;
+  const usageText = typeof theme.usage === 'string' ? theme.usage.trim() : '';
+  const usageNum = parseInt(usageText, 10) || 0;
   const heatLabel = usageNum >= 100 ? '🔥 ' : usageNum >= 50 ? '⭐ ' : '';
 
+  const usageBadge = usageText
+    ? `<div class="badge-usage">${heatLabel}${usageText}</div>`
+    : '';
+
   div.innerHTML = `
-    <div class="badge-usage">${heatLabel}${theme.usage} dipilih</div>
+    ${usageBadge}
     <div class="theme-img-container loading">
       <img src="${thumbUrl}" alt="${theme.name}" class="theme-img"
+           loading="lazy" decoding="async" referrerpolicy="no-referrer" fetchpriority="low"
            onload="this.parentElement.classList.remove('loading')"
            onerror="this.parentElement.classList.remove('loading');this.src='https://placehold.co/400x600/${color}/880E4F?text=${encodeURIComponent(theme.name)}'">
 
@@ -472,10 +520,10 @@ function createThemeCard(theme) {
         </div>
         <div style="display:flex;gap:8px;">
           <button class="overlay-btn-preview js-preview-btn" type="button">
-            <i class="fas fa-eye" style="font-size:0.7rem;"></i> Preview
+            Preview
           </button>
           <a href="${waLink}" target="_blank" class="overlay-btn-order js-order-btn">
-            <i class="fab fa-whatsapp" style="font-size:0.8rem;"></i> Pesan
+            Pesan
           </a>
         </div>
       </div>
