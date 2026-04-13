@@ -98,6 +98,10 @@ function createPetal() {
 }
 
 function initSakuraPetals() {
+  if (
+    document.body.classList.contains('editorial-home') ||
+    document.body.classList.contains('editorial-themes')
+  ) return;
   setInterval(createPetal, PETAL_CONFIG.interval);
 }
 
@@ -124,27 +128,21 @@ function initModal() {
 
       <div class="modal-body">
 
-        <!-- ── Left: Phone mockup ── -->
+        <!-- ── Left: Preview stage ── -->
         <div class="modal-phone-panel">
-          <div class="phone-mockup-frame">
-            <div class="phone-notch">
-              <div class="phone-camera"></div>
+          <div class="phone-screen modal-preview-stage">
+            <!-- Loading spinner -->
+            <div id="iframeLoader" class="iframe-loader">
+              <div class="iframe-spinner"></div>
+              <p>Memuat preview...</p>
             </div>
-            <div class="phone-screen">
-              <!-- Loading spinner -->
-              <div id="iframeLoader" class="iframe-loader">
-                <div class="iframe-spinner"></div>
-                <p>Memuat preview...</p>
-              </div>
-              <!-- Live iframe preview -->
-              <iframe id="modalIframe" class="phone-preview-iframe"
-                      sandbox="allow-scripts allow-same-origin allow-popups"
-                      loading="lazy"
-                      allowfullscreen></iframe>
-              <!-- Fallback thumbnail if iframe fails -->
-              <img id="modalThumbImg" src="" alt="Preview tema" class="phone-preview-img" style="display:none;">
-            </div>
-            <div class="phone-home-bar"></div>
+            <!-- Live iframe preview -->
+            <iframe id="modalIframe" class="phone-preview-iframe"
+                    sandbox="allow-scripts allow-same-origin allow-popups"
+                    loading="lazy"
+                    allowfullscreen></iframe>
+            <!-- Fallback thumbnail if iframe fails -->
+            <img id="modalThumbImg" src="" alt="Preview tema" class="phone-preview-img" style="display:none;">
           </div>
           <p id="modalPreviewHint" class="phone-scroll-hint">
             <i class="fas fa-hand-pointer" style="font-size:0.65rem;"></i>
