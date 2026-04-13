@@ -161,7 +161,7 @@
             Kamu bisa preview dulu, lalu konsultasikan pilihan terbaiknya bersama tim Seraya.
           </p>
 
-          <div class="flex flex-wrap justify-center gap-4 mt-8">
+          <div class="themes-stat-grid flex flex-wrap justify-center gap-4 mt-8">
             <div class="themes-stat-pill">
               <span>500+ Tema Elegan</span>
             </div>
@@ -180,38 +180,69 @@
 
       <section class="editorial-themes-section px-4 sm:px-6 py-16">
         <div class="container mx-auto">
-          <div class="max-w-5xl mx-auto mb-12 space-y-6">
+          <div class="editorial-discovery-panel max-w-5xl mx-auto mb-12">
             <div class="editorial-search-wrap">
               <input type="text" id="themeSearch"
                 placeholder="Cari nama tema yang kamu suka..."
                 class="editorial-search-input">
               <span class="editorial-search-icon" aria-hidden="true">Cari</span>
             </div>
+            <p class="editorial-search-help">Cari cepat, lalu pilih filter sesuai jenis acara dan gaya yang kamu inginkan.</p>
 
-            <div class="flex flex-wrap justify-center gap-2" id="acaraFilters">
-              <button class="filter-btn active" data-filter="all" data-group="acara">Semua Acara</button>
-              <button class="filter-btn" data-filter="Pernikahan" data-group="acara">Pernikahan</button>
-              <button class="filter-btn" data-filter="Khitan" data-group="acara">Khitan</button>
-              <button class="filter-btn" data-filter="Aqiqah" data-group="acara">Aqiqah</button>
-              <button class="filter-btn" data-filter="Ultah" data-group="acara">Ulang Tahun</button>
-              <button class="filter-btn" data-filter="Natal" data-group="acara">Natal</button>
-              <button class="filter-btn" data-filter="Formal" data-group="acara">Formal</button>
+            <div class="editorial-filter-group">
+              <p class="editorial-filter-label">Filter Jenis Acara</p>
+              <div class="editorial-filter-select-wrap">
+                <label class="editorial-filter-select-label" for="mobileAcaraFilter">Jenis acara</label>
+                <select id="mobileAcaraFilter" class="editorial-filter-select" aria-label="Filter jenis acara">
+                  <option value="all">Semua Acara</option>
+                  <option value="Pernikahan">Pernikahan</option>
+                  <option value="Khitan">Khitan</option>
+                  <option value="Aqiqah">Aqiqah</option>
+                  <option value="Ultah">Ulang Tahun</option>
+                  <option value="Natal">Natal</option>
+                  <option value="Formal">Formal</option>
+                </select>
+              </div>
+              <div class="editorial-filter-row" id="acaraFilters">
+                <button class="filter-btn active" data-filter="all" data-group="acara">Semua Acara</button>
+                <button class="filter-btn" data-filter="Pernikahan" data-group="acara">Pernikahan</button>
+                <button class="filter-btn" data-filter="Khitan" data-group="acara">Khitan</button>
+                <button class="filter-btn" data-filter="Aqiqah" data-group="acara">Aqiqah</button>
+                <button class="filter-btn" data-filter="Ultah" data-group="acara">Ulang Tahun</button>
+                <button class="filter-btn" data-filter="Natal" data-group="acara">Natal</button>
+                <button class="filter-btn" data-filter="Formal" data-group="acara">Formal</button>
+              </div>
             </div>
 
-            <div class="flex flex-wrap justify-center gap-2" id="tipeFilters">
-              <button class="filter-chip active" data-filter="all" data-group="tipe">Semua Gaya</button>
-              <button class="filter-chip" data-filter="Elegan" data-group="tipe">Elegan</button>
-              <button class="filter-chip" data-filter="Budaya" data-group="tipe">Budaya</button>
-              <button class="filter-chip" data-filter="Muslim" data-group="tipe">Muslim</button>
-              <button class="filter-chip" data-filter="Simple" data-group="tipe">Simple</button>
-              <button class="filter-chip" data-filter="Bunga" data-group="tipe">Bunga</button>
-              <button class="filter-chip" data-filter="Formal" data-group="tipe">Formal</button>
+            <div class="editorial-filter-group">
+              <p class="editorial-filter-label">Filter Gaya Tema</p>
+              <div class="editorial-filter-select-wrap">
+                <label class="editorial-filter-select-label" for="mobileTipeFilter">Gaya tema</label>
+                <select id="mobileTipeFilter" class="editorial-filter-select" aria-label="Filter gaya tema">
+                  <option value="all">Semua Gaya</option>
+                  <option value="Elegan">Elegan</option>
+                  <option value="Budaya">Budaya</option>
+                  <option value="Muslim">Muslim</option>
+                  <option value="Simple">Simple</option>
+                  <option value="Bunga">Bunga</option>
+                  <option value="Formal">Formal</option>
+                </select>
+              </div>
+              <div class="editorial-filter-row" id="tipeFilters">
+                <button class="filter-chip active" data-filter="all" data-group="tipe">Semua Gaya</button>
+                <button class="filter-chip" data-filter="Elegan" data-group="tipe">Elegan</button>
+                <button class="filter-chip" data-filter="Budaya" data-group="tipe">Budaya</button>
+                <button class="filter-chip" data-filter="Muslim" data-group="tipe">Muslim</button>
+                <button class="filter-chip" data-filter="Simple" data-group="tipe">Simple</button>
+                <button class="filter-chip" data-filter="Bunga" data-group="tipe">Bunga</button>
+                <button class="filter-chip" data-filter="Formal" data-group="tipe">Formal</button>
+              </div>
             </div>
           </div>
 
           <div class="editorial-gallery-meta max-w-7xl mx-auto mb-6 px-1">
             <p id="themeCount" class="editorial-gallery-count"></p>
-            <p class="editorial-gallery-hint">Klik kartu untuk lihat preview tema</p>
+            <p class="editorial-gallery-hint">Tap kartu untuk preview, atau langsung tekan pesan</p>
           </div>
 
           <div id="themeGallery" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-5"></div>

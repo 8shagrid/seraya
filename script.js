@@ -327,10 +327,13 @@ function initThemeGallery() {
   const themeGallery      = document.getElementById('themeGallery');
   const themeSearch       = document.getElementById('themeSearch');
   const loadMoreBtn       = document.getElementById('loadMoreBtn');
+  const mobileAcaraFilter = document.getElementById('mobileAcaraFilter');
+  const mobileTipeFilter  = document.getElementById('mobileTipeFilter');
 
   if (!themeGallery || typeof THEMES_DATA === 'undefined') return;
 
   filteredThemes = [...THEMES_DATA];
+  syncFilterControls();
   updateGallery();
 
   // Search
@@ -345,12 +348,27 @@ function initThemeGallery() {
   document.querySelectorAll('.filter-btn, .filter-chip').forEach(btn => {
     btn.addEventListener('click', () => {
       const { group, filter } = btn.dataset;
-      document.querySelectorAll(`[data-group="${group}"]`).forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      galleryState[group] = filter;
+      setGalleryFilter(group, filter);
+      syncFilterControls();
       applyFilters();
     });
   });
+
+  if (mobileAcaraFilter) {
+    mobileAcaraFilter.addEventListener('change', e => {
+      setGalleryFilter('acara', e.target.value);
+      syncFilterControls();
+      applyFilters();
+    });
+  }
+
+  if (mobileTipeFilter) {
+    mobileTipeFilter.addEventListener('change', e => {
+      setGalleryFilter('tipe', e.target.value);
+      syncFilterControls();
+      applyFilters();
+    });
+  }
 
   // Load more
   if (loadMoreBtn) {
@@ -358,6 +376,27 @@ function initThemeGallery() {
       currentPage++;
       updateGallery(true);
     });
+  }
+}
+
+function setGalleryFilter(group, value) {
+  galleryState[group] = value;
+}
+
+function syncFilterControls() {
+  document.querySelectorAll('[data-group]').forEach(control => {
+    control.classList.toggle('active', control.dataset.filter === galleryState[control.dataset.group]);
+  });
+
+  const mobileAcaraFilter = document.getElementById('mobileAcaraFilter');
+  const mobileTipeFilter  = document.getElementById('mobileTipeFilter');
+
+  if (mobileAcaraFilter) {
+    mobileAcaraFilter.value = galleryState.acara;
+  }
+
+  if (mobileTipeFilter) {
+    mobileTipeFilter.value = galleryState.tipe;
   }
 }
 
