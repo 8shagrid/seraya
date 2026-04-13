@@ -1010,6 +1010,7 @@ body.editorial-home .editorial-gallery .theme-card-name {
 .editorial-primary-btn,
 .editorial-secondary-btn {
   padding: 15px 24px;
+  box-sizing: border-box;
   min-width: 190px;
   font-size: 0.82rem;
   font-weight: 700;
