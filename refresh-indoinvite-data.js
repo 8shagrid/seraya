@@ -3,6 +3,15 @@ const path = require('path');
 
 const SOURCE_FILE = process.argv[2] || 'indoinvite-source.html';
 const sourcePath = path.resolve(process.cwd(), SOURCE_FILE);
+
+if (!fs.existsSync(sourcePath)) {
+  throw new Error(
+    `Source file not found: ${sourcePath}\n` +
+    'Run this script with a saved Indoinvite HTML source, for example:\n' +
+    'node refresh-indoinvite-data.js path\\to\\indoinvite-source.html'
+  );
+}
+
 const html = fs.readFileSync(sourcePath, 'utf8');
 
 const allTemaMatch = html.match(/const allTema = (\[.*?\]);\s*let debounceTimer/s);

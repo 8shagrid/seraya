@@ -21,7 +21,6 @@ const galleryState = {
 document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initSmoothScroll();
-  initHeroMedia();
   initSakuraPetals();
   initModal(); // inject modal DOM into body
 
@@ -72,49 +71,6 @@ function initSmoothScroll() {
       window.scrollTo({ top, behavior: 'smooth' });
     });
   });
-}
-
-// =============================================
-// Hero Media
-// =============================================
-function initHeroMedia() {
-  const heroVideo = document.querySelector('.editorial-hero-video');
-  if (!heroVideo) return;
-
-  const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const saveDataEnabled = Boolean(connection && connection.saveData);
-  const slowConnection = Boolean(connection && /2g/.test(connection.effectiveType || ''));
-  const smallScreen = window.innerWidth < 768;
-
-  if (prefersReducedMotion || saveDataEnabled || slowConnection || smallScreen) {
-    heroVideo.removeAttribute('autoplay');
-    heroVideo.pause();
-    return;
-  }
-
-  const playVideo = () => {
-    heroVideo.setAttribute('autoplay', '');
-    const playPromise = heroVideo.play();
-    if (playPromise && typeof playPromise.catch === 'function') {
-      playPromise.catch(() => {});
-    }
-  };
-
-  if (!('IntersectionObserver' in window)) {
-    playVideo();
-    return;
-  }
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      playVideo();
-      observer.disconnect();
-    });
-  }, { threshold: 0.35 });
-
-  observer.observe(heroVideo);
 }
 
 // =============================================
