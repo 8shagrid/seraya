@@ -1303,6 +1303,36 @@ body.editorial-home .editorial-gallery .theme-card-name {
   margin-top: 4px;
 }
 
+.editorial-footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.editorial-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  color: #3d3129;
+  border: 1px solid rgba(87, 68, 55, 0.18);
+  background: rgba(255, 255, 255, 0.58);
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.editorial-social-link:hover {
+  color: #9f7658;
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.editorial-social-link svg {
+  width: 20px;
+  height: 20px;
+}
+
 @media (max-width: 1024px) {
   .editorial-story-grid,
   .editorial-faq-grid,

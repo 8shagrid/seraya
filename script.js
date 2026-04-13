@@ -279,7 +279,7 @@ function openPreviewModal(theme) {
   }
 
   const waMsg = `Halo%20Seraya%2C%20saya%20tertarik%20dengan%20tema%20*${encodeURIComponent(theme.name)}*`;
-  document.getElementById('modalWaBtn').href    = `https://wa.me/6281234567890?text=${waMsg}`;
+  document.getElementById('modalWaBtn').href    = `https://wa.me/6289679160870?text=${waMsg}`;
 
   // Show modal
   modal.classList.add('active');
@@ -451,7 +451,7 @@ function createThemeCard(theme) {
     || `https://placehold.co/400x600/${color}/880E4F?text=${encodeURIComponent(theme.name)}`;
 
   const waMsg    = `Halo%20Seraya%2C%20saya%20tertarik%20dengan%20tema%20*${encodeURIComponent(theme.name)}*`;
-  const waLink   = `https://wa.me/6281234567890?text=${waMsg}`;
+  const waLink   = `https://wa.me/6289679160870?text=${waMsg}`;
 
   const usageText = typeof theme.usage === 'string' ? theme.usage.trim() : '';
   const usageNum = parseInt(usageText, 10) || 0;
