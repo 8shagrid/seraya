@@ -1946,6 +1946,46 @@ body.editorial-themes .theme-card-sub::before {
   color: var(--sakura-text-strong);
 }
 
+@media (max-width: 1024px) {
+  .editorial-discovery-panel {
+    gap: 16px;
+    padding: 18px 16px;
+  }
+
+  .editorial-search-help {
+    font-size: 0.88rem;
+    text-align: left;
+  }
+
+  .editorial-search-input {
+    height: 40px;
+    padding: 0 16px 0 44px;
+    font-size: 0.88rem;
+  }
+
+  .editorial-filter-label {
+    font-size: 0.68rem;
+  }
+
+  .editorial-filter-group {
+    gap: 8px;
+  }
+
+  .editorial-filter-select-wrap {
+    display: grid;
+  }
+
+  .editorial-filter-row {
+    display: none;
+  }
+
+  .editorial-filter-select {
+    height: 40px;
+    padding: 0 2.25rem 0 0.8rem;
+    font-size: 0.84rem;
+  }
+}
+
 @media (max-width: 768px) {
   .editorial-themes-title {
     font-size: 2.8rem;
