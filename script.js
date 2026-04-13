@@ -144,9 +144,6 @@ function initModal() {
             <!-- Fallback thumbnail if iframe fails -->
             <img id="modalThumbImg" src="" alt="Preview tema" class="phone-preview-img" style="display:none;">
           </div>
-          <p id="modalPreviewHint" class="phone-scroll-hint">
-            Drag dan scroll preview langsung di popup
-          </p>
         </div>
 
         <!-- ── Right: Info panel ── -->
@@ -174,10 +171,6 @@ function initModal() {
           <a id="modalFallbackLink" href="#" target="_blank" class="modal-btn-secondary modal-btn-hidden">
             Buka Demo di Tab Baru
           </a>
-
-          <p id="modalNoteText" class="modal-note-text">
-            Preview tampil langsung di popup ini, jadi pengunjung tidak perlu melihat URL demo.
-          </p>
         </div>
 
       </div>
@@ -226,8 +219,6 @@ function openPreviewModal(theme) {
   const thumbImg  = document.getElementById('modalThumbImg');
   const loader    = document.getElementById('iframeLoader');
   const fallbackLink = document.getElementById('modalFallbackLink');
-  const noteText  = document.getElementById('modalNoteText');
-  const previewHint = document.getElementById('modalPreviewHint');
   const isIframeBlockedSource = isKnownIframeBlockedUrl(theme.url);
 
   // Reset state
@@ -237,8 +228,6 @@ function openPreviewModal(theme) {
   iframe.src              = ''; // clear previous
   fallbackLink.classList.add('modal-btn-hidden');
   fallbackLink.href       = theme.url;
-  noteText.textContent    = 'Preview tampil langsung di popup ini, jadi pengunjung tidak perlu melihat URL demo.';
-  previewHint.textContent = 'Drag dan scroll preview langsung di popup';
 
   // Prepare fallback thumbnail
   thumbImg.src = thumbUrl;
@@ -250,8 +239,6 @@ function openPreviewModal(theme) {
     iframe.style.display   = 'none';
     thumbImg.style.display = 'block';
     loader.style.display   = 'none';
-    noteText.textContent   = 'Demo dari provider ini memang tidak bisa ditampilkan langsung di iframe, jadi kami tampilkan preview visualnya di modal.';
-    previewHint.textContent = 'Preview visual ditampilkan langsung di popup';
     fallbackLink.classList.remove('modal-btn-hidden');
   } else {
     // Load iframe with theme URL
@@ -269,8 +256,6 @@ function openPreviewModal(theme) {
         thumbImg.style.display = 'block';
         loader.style.display   = 'none';
         fallbackLink.classList.remove('modal-btn-hidden');
-        noteText.textContent   = 'Browser menahan embed demo ini. Tombol cadangan di bawah bisa membuka demonya tanpa menampilkan URL di area preview.';
-        previewHint.textContent = 'Preview visual ditampilkan langsung di popup';
       }
     }, 8000);
 
