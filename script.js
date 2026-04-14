@@ -33,6 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // index.html — teaser section
     initTeaserGallery();
   }
+
+  initAccordion();
 });
 
 // =============================================
@@ -529,4 +531,26 @@ function createThemeCard(theme) {
   div.addEventListener('click', () => openPreviewModal(theme));
 
   return div;
+}
+
+// =============================================
+// FAQ Accordion
+// =============================================
+function initAccordion() {
+  const faqItems = document.querySelectorAll('.editorial-faq-item');
+  if (!faqItems.length) return;
+
+  faqItems.forEach(item => {
+    const header = item.querySelector('.faq-header');
+    header.addEventListener('click', () => {
+      const isActive = item.classList.contains('active');
+
+      // (Optional) Close other items
+      faqItems.forEach(i => i.classList.remove('active'));
+
+      if (!isActive) {
+        item.classList.add('active');
+      }
+    });
+  });
 }
