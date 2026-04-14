@@ -2599,7 +2599,7 @@ body.editorial-themes .theme-card-sub::before {
   }
 
   .phone-screen {
-    height: 390px;
+    height: auto;
   }
 
   .modal-info-panel {
@@ -2663,6 +2663,12 @@ body.editorial-themes .theme-card-sub::before {
     min-height: 44px;
     display: flex;
     align-items: center;
+  }
+
+  .editorial-mobile-cta {
+    min-height: 38px;
+    padding: 8px 16px;
+    justify-content: center;
   }
 
   .editorial-hero {
@@ -2864,7 +2870,8 @@ body.editorial-themes .theme-card-sub::before {
 
   .modal-preview-stage {
     width: min(100%, 260px);
-    height: 470px;
+    aspect-ratio: 400 / 810;
+    height: auto;
   }
 
   .modal-info-panel {
@@ -2954,7 +2961,7 @@ body.editorial-themes .theme-card-sub::before {
   }
 
   #teaserGallery {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .editorial-themes-hero {
@@ -3075,22 +3082,29 @@ body.editorial-themes .theme-card-sub::before {
     gap: 12px;
   }
 
-  body.editorial-themes .theme-card-name {
-    font-size: 1rem;
-    white-space: normal;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-  }
-
-  .theme-card-info {
-    padding: 0.9rem 0.85rem 1rem;
-  }
-
-  .theme-card-sub {
+  .theme-card-name {
+    font-size: 0.58rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  .theme-card-info {
+    padding: 0.7rem 0.65rem 0.8rem;
+  }
+
+  .theme-card-sub {
+    font-size: 0.58rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .overlay-btn-preview,
+  .overlay-btn-order {
+    padding: 0.35rem 0;
+    font-size: 0.65rem;
+    gap: 3px;
   }
 
   .modal-body {
@@ -3112,7 +3126,8 @@ body.editorial-themes .theme-card-sub::before {
 
   .modal-preview-stage {
     width: min(100%, 220px);
-    height: 400px;
+    aspect-ratio: 400 / 810;
+    height: auto;
   }
 
   .modal-info-panel {
