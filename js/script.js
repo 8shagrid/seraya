@@ -4,15 +4,15 @@
 // Constants & State
 // =============================================
 const ITEMS_PER_PAGE = 16;
-const TEASER_COUNT   = 8;
+const TEASER_COUNT = 8;
 
-let currentPage    = 1;
+let currentPage = 1;
 let filteredThemes = [];
 
 const galleryState = {
   search: '',
-  acara:  'all',
-  tipe:   'all'
+  acara: 'all',
+  tipe: 'all'
 };
 
 // =============================================
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Mobile Menu Toggle
 // =============================================
 function initMobileMenu() {
-  const menuBtn    = document.getElementById('menuBtn');
+  const menuBtn = document.getElementById('menuBtn');
   const mobileMenu = document.getElementById('mobileMenu');
   if (!menuBtn || !mobileMenu) return;
 
@@ -79,11 +79,11 @@ function initSmoothScroll() {
 // Sakura Petal Rain
 // =============================================
 const PETAL_CONFIG = {
-  interval:         900,
-  lifetime:         9000,
-  minSize:          12,
-  maxSizeExtra:     20,
-  minDuration:      4,
+  interval: 900,
+  lifetime: 9000,
+  minSize: 12,
+  maxSizeExtra: 20,
+  minDuration: 4,
   maxDurationExtra: 5
 };
 
@@ -91,10 +91,10 @@ function createPetal() {
   const petal = document.createElement('div');
   petal.classList.add('sakura-petal');
   petal.textContent = '🌸';
-  petal.style.left             = `${Math.random() * 100}%`;
-  petal.style.fontSize         = `${Math.random() * PETAL_CONFIG.maxSizeExtra + PETAL_CONFIG.minSize}px`;
+  petal.style.left = `${Math.random() * 100}%`;
+  petal.style.fontSize = `${Math.random() * PETAL_CONFIG.maxSizeExtra + PETAL_CONFIG.minSize}px`;
   petal.style.animationDuration = `${Math.random() * PETAL_CONFIG.maxDurationExtra + PETAL_CONFIG.minDuration}s`;
-  petal.style.animationDelay   = `${Math.random() * 5}s`;
+  petal.style.animationDelay = `${Math.random() * 5}s`;
   document.body.appendChild(petal);
   setTimeout(() => petal.remove(), PETAL_CONFIG.lifetime);
 }
@@ -114,7 +114,7 @@ function initModal() {
   if (document.getElementById('previewModal')) return; // guard
 
   const modalEl = document.createElement('div');
-  modalEl.id        = 'previewModal';
+  modalEl.id = 'previewModal';
   modalEl.className = 'preview-modal-overlay';
   modalEl.setAttribute('role', 'dialog');
   modalEl.setAttribute('aria-modal', 'true');
@@ -163,7 +163,7 @@ function initModal() {
           <p class="modal-desc-text">
             Suka desain ini? Hubungi kami via WhatsApp dan tim Seraya akan
             membantu menyesuaikan undangan dengan data Anda.
-            Proses cepat &amp; revisi 2×!
+            Proses cepat &amp; revisi unlimited!
           </p>
 
           <a id="modalWaBtn" href="#" target="_blank" class="modal-btn-primary">
@@ -200,15 +200,15 @@ function openPreviewModal(theme) {
 
   // Populate info
   const usageText = typeof theme.usage === 'string' ? theme.usage.trim() : '';
-  const usageNum  = parseInt(usageText, 10) || 0;
-  const heatIcon  = usageNum >= 100 ? '🔥' : usageNum >= 50 ? '⭐' : '💌';
-  const mainType  = theme.acara[0] || theme.tipe[0] || 'Design';
-  const color     = getPlaceholderColor(mainType);
-  const thumbUrl  = theme.thumbnail
+  const usageNum = parseInt(usageText, 10) || 0;
+  const heatIcon = usageNum >= 100 ? '🔥' : usageNum >= 50 ? '⭐' : '💌';
+  const mainType = theme.acara[0] || theme.tipe[0] || 'Design';
+  const color = getPlaceholderColor(mainType);
+  const thumbUrl = theme.thumbnail
     || `https://placehold.co/400x600/${color}/880E4F?text=${encodeURIComponent(theme.name)}`;
 
   document.getElementById('modalThemeName').textContent = theme.name;
-  document.getElementById('modalUsage').textContent     = usageText ? `${heatIcon} ${usageText}` : '';
+  document.getElementById('modalUsage').textContent = usageText ? `${heatIcon} ${usageText}` : '';
   document.getElementById('modalUsageRow').style.display = usageText ? '' : 'none';
 
   const allBadges = [...theme.acara, ...theme.tipe];
@@ -217,30 +217,30 @@ function openPreviewModal(theme) {
     .join('');
 
   // Setup iframe — load the actual preview URL
-  const iframe    = document.getElementById('modalIframe');
-  const thumbImg  = document.getElementById('modalThumbImg');
-  const loader    = document.getElementById('iframeLoader');
+  const iframe = document.getElementById('modalIframe');
+  const thumbImg = document.getElementById('modalThumbImg');
+  const loader = document.getElementById('iframeLoader');
   const fallbackLink = document.getElementById('modalFallbackLink');
   const isIframeBlockedSource = isKnownIframeBlockedUrl(theme.url);
 
   // Reset state
-  iframe.style.display    = 'block';
-  thumbImg.style.display  = 'none';
-  loader.style.display    = 'flex';
-  iframe.src              = ''; // clear previous
+  iframe.style.display = 'block';
+  thumbImg.style.display = 'none';
+  loader.style.display = 'flex';
+  iframe.src = ''; // clear previous
   fallbackLink.classList.add('modal-btn-hidden');
-  fallbackLink.href       = theme.url;
+  fallbackLink.href = theme.url;
 
   // Prepare fallback thumbnail
   thumbImg.src = thumbUrl;
   thumbImg.alt = theme.name;
 
-  // Known providers like indoinvite.com block iframe embedding,
+  // Known providers like katalog.seraya.my.id block iframe embedding,
   // so show the thumbnail directly instead of a browser error page.
   if (isIframeBlockedSource) {
-    iframe.style.display   = 'none';
+    iframe.style.display = 'none';
     thumbImg.style.display = 'block';
-    loader.style.display   = 'none';
+    loader.style.display = 'none';
     fallbackLink.classList.remove('modal-btn-hidden');
   } else {
     // Load iframe with theme URL
@@ -254,9 +254,9 @@ function openPreviewModal(theme) {
     // Fallback: if iframe blocked (X-Frame-Options), show thumbnail after timeout
     const fallbackTimer = setTimeout(() => {
       if (loader.style.display !== 'none') {
-        iframe.style.display   = 'none';
+        iframe.style.display = 'none';
         thumbImg.style.display = 'block';
-        loader.style.display   = 'none';
+        loader.style.display = 'none';
         fallbackLink.classList.remove('modal-btn-hidden');
       }
     }, 8000);
@@ -266,7 +266,7 @@ function openPreviewModal(theme) {
   }
 
   const waMsg = `Halo%20Seraya%2C%20saya%20tertarik%20dengan%20tema%20*${encodeURIComponent(theme.name)}*`;
-  document.getElementById('modalWaBtn').href    = `https://wa.me/6289679160870?text=${waMsg}`;
+  document.getElementById('modalWaBtn').href = `https://wa.me/6289679160870?text=${waMsg}`;
 
   // Show modal
   modal.classList.add('active');
@@ -289,7 +289,7 @@ function closePreviewModal() {
 function isKnownIframeBlockedUrl(url) {
   try {
     const { hostname } = new URL(url);
-    return hostname.includes('indoinvite.com');
+    return hostname.includes('katalog.seraya.my.id');
   } catch {
     return false;
   }
@@ -326,11 +326,11 @@ function shuffleArray(items) {
 // Full Theme Gallery — themes.html
 // =============================================
 function initThemeGallery() {
-  const themeGallery      = document.getElementById('themeGallery');
-  const themeSearch       = document.getElementById('themeSearch');
-  const loadMoreBtn       = document.getElementById('loadMoreBtn');
+  const themeGallery = document.getElementById('themeGallery');
+  const themeSearch = document.getElementById('themeSearch');
+  const loadMoreBtn = document.getElementById('loadMoreBtn');
   const mobileAcaraFilter = document.getElementById('mobileAcaraFilter');
-  const mobileTipeFilter  = document.getElementById('mobileTipeFilter');
+  const mobileTipeFilter = document.getElementById('mobileTipeFilter');
 
   if (!themeGallery || typeof THEMES_DATA === 'undefined') return;
 
@@ -391,7 +391,7 @@ function syncFilterControls() {
   });
 
   const mobileAcaraFilter = document.getElementById('mobileAcaraFilter');
-  const mobileTipeFilter  = document.getElementById('mobileTipeFilter');
+  const mobileTipeFilter = document.getElementById('mobileTipeFilter');
 
   if (mobileAcaraFilter) {
     mobileAcaraFilter.value = galleryState.acara;
@@ -403,26 +403,26 @@ function syncFilterControls() {
 }
 
 function applyFilters() {
-  currentPage    = 1;
+  currentPage = 1;
   filteredThemes = THEMES_DATA.filter(theme => {
     const matchSearch = theme.name.toLowerCase().includes(galleryState.search);
-    const matchAcara  = galleryState.acara === 'all' || theme.acara.includes(galleryState.acara);
-    const matchTipe   = galleryState.tipe  === 'all' || theme.tipe.includes(galleryState.tipe);
+    const matchAcara = galleryState.acara === 'all' || theme.acara.includes(galleryState.acara);
+    const matchTipe = galleryState.tipe === 'all' || theme.tipe.includes(galleryState.tipe);
     return matchSearch && matchAcara && matchTipe;
   });
   updateGallery();
 }
 
 function updateGallery(append = false) {
-  const themeGallery    = document.getElementById('themeGallery');
-  const emptyState      = document.getElementById('emptyState');
+  const themeGallery = document.getElementById('themeGallery');
+  const emptyState = document.getElementById('emptyState');
   const loadMoreContainer = document.getElementById('loadMoreContainer');
-  const themeCount      = document.getElementById('themeCount');
+  const themeCount = document.getElementById('themeCount');
 
   if (!append) themeGallery.innerHTML = '';
 
-  const start       = (currentPage - 1) * ITEMS_PER_PAGE;
-  const end         = start + ITEMS_PER_PAGE;
+  const start = (currentPage - 1) * ITEMS_PER_PAGE;
+  const end = start + ITEMS_PER_PAGE;
   const pagedThemes = filteredThemes.slice(start, end);
 
   // Update count label
@@ -456,28 +456,28 @@ function updateGallery(append = false) {
 function getPlaceholderColor(type) {
   const colors = {
     'Pernikahan': 'FFD9E6',
-    'Khitan':     'E3F2FD',
-    'Aqiqah':     'E8F5E9',
-    'Ultah':      'FFF3E0',
-    'Elegan':     'FCE4EC',
-    'Budaya':     'F3E5F5',
-    'Muslim':     'E0F2F1',
-    'Formal':     'E1F5FE'
+    'Khitan': 'E3F2FD',
+    'Aqiqah': 'E8F5E9',
+    'Ultah': 'FFF3E0',
+    'Elegan': 'FCE4EC',
+    'Budaya': 'F3E5F5',
+    'Muslim': 'E0F2F1',
+    'Formal': 'E1F5FE'
   };
   return colors[type] || 'F5F5F5';
 }
 
 function createThemeCard(theme) {
-  const div      = document.createElement('div');
-  div.className  = 'theme-card';
+  const div = document.createElement('div');
+  div.className = 'theme-card';
 
   const mainType = theme.acara[0] || theme.tipe[0] || 'Design';
-  const color    = getPlaceholderColor(mainType);
+  const color = getPlaceholderColor(mainType);
   const thumbUrl = theme.thumbnail
     || `https://placehold.co/400x600/${color}/880E4F?text=${encodeURIComponent(theme.name)}`;
 
-  const waMsg    = `Halo%20Seraya%2C%20saya%20tertarik%20dengan%20tema%20*${encodeURIComponent(theme.name)}*`;
-  const waLink   = `https://wa.me/6289679160870?text=${waMsg}`;
+  const waMsg = `Halo%20Seraya%2C%20saya%20tertarik%20dengan%20tema%20*${encodeURIComponent(theme.name)}*`;
+  const waLink = `https://wa.me/6289679160870?text=${waMsg}`;
 
   const usageText = typeof theme.usage === 'string' ? theme.usage.trim() : '';
   const usageNum = parseInt(usageText, 10) || 0;

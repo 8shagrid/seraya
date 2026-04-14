@@ -126,7 +126,7 @@ function pickOrderedLabels(tokens, labelMap, labelOrder) {
 }
 
 function buildPreviewUrl(id) {
-  return `https://indoinvite.com/s/1952/undangan/${id}?kpd=Bapak%20Budi&contoh=1`;
+  return `https://katalog.seraya.my.id/s/1952/undangan/${id}?kpd=Bapak%20Budi&contoh=1`;
 }
 
 function buildTheme(rawTheme) {
@@ -181,12 +181,12 @@ for (const theme of themes) {
 }
 
 fs.writeFileSync(
-  path.resolve(process.cwd(), 'themes-data.js'),
+  path.resolve(process.cwd(), 'js', 'data', 'themes-data.js'),
   `var THEMES_DATA=${JSON.stringify(themes)};\n`
 );
 
 fs.writeFileSync(
-  path.resolve(process.cwd(), 'featured-themes.js'),
+  path.resolve(process.cwd(), 'js', 'data', 'featured-themes.js'),
   `window.FEATURED_THEMES=${JSON.stringify(featured)};\n`
 );
 
