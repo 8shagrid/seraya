@@ -1072,6 +1072,7 @@ body.editorial-home .editorial-gallery .theme-card-name {
   padding: 84px 36px;
 }
 
+
 .editorial-story-grid,
 .editorial-faq-grid {
   display: grid;
@@ -1097,6 +1098,7 @@ body.editorial-home .editorial-gallery .theme-card-name {
   top: 110px;
   width: 25%;
   height: 300px;
+  z-index: 1;
 }
 
 .editorial-photo-main {
@@ -1104,13 +1106,15 @@ body.editorial-home .editorial-gallery .theme-card-name {
   top: 0;
   width: 50%;
   height: 540px;
+  z-index: 3;
 }
 
 .editorial-photo-small {
-  left: 12%;
+  left: 10%;
   bottom: 0;
   width: 30%;
   height: 250px;
+  z-index: 2;
 }
 
 .editorial-photo-fill {
