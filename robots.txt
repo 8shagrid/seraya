@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://seraya.id/sitemap.xml
+Sitemap: https://seraya.my.id/sitemap.xml
