@@ -4,7 +4,7 @@
 // Constants & State
 // =============================================
 const ITEMS_PER_PAGE = 16;
-const TEASER_COUNT   = 6;
+const TEASER_COUNT   = 8;
 
 let currentPage    = 1;
 let filteredThemes = [];
