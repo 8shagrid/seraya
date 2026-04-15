@@ -37,7 +37,8 @@ function syncFooterUrl() {
   if (!footerUrl) return;
 
   const hostname = window.location.hostname;
+  const pathname = window.location.pathname.replace(/index\.html$/, '').replace(/\/$/, '');
   footerUrl.textContent = hostname && hostname !== 'localhost'
-    ? hostname
-    : 'link.seraya.my.id';
+    ? `${hostname}${pathname}`
+    : 'seraya.my.id/link';
 }
