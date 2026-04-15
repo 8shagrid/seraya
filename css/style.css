@@ -3184,3 +3184,83 @@ body.editorial-themes .theme-card-sub::before {
     width: 100%;
   }
 }
+
+/* Modal scroll fix: scroll the whole modal, not the info panel */
+.preview-modal-container {
+  overflow-x: hidden;
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.modal-info-panel {
+  overflow: visible;
+}
+
+.preview-modal-container::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .modal-body {
+    overflow: visible;
+  }
+}
+
+/* Final pink theme overrides for modal close + category labels */
+.preview-modal-container .modal-close-btn {
+  top: 1.1rem;
+  right: 1.1rem;
+  width: 40px;
+  height: 40px;
+  background: rgba(247, 219, 231, 0.96);
+  border: 1px solid rgba(199, 112, 147, 0.34);
+  color: var(--sakura-accent-deep);
+  font-size: 0.78rem;
+}
+
+.preview-modal-container .modal-close-btn:hover {
+  background: var(--sakura-accent-strong);
+  border-color: var(--sakura-accent-strong);
+  color: #fff8fb;
+}
+
+.preview-modal-container .modal-badge,
+body.editorial-themes .filter-btn,
+body.editorial-themes .filter-chip,
+body.editorial-themes .themes-stat-pill {
+  background: rgba(247, 219, 231, 0.72);
+  border-color: rgba(199, 112, 147, 0.28);
+  color: var(--sakura-accent-deep);
+}
+
+.preview-modal-container .modal-badge {
+  background: rgba(247, 219, 231, 0.56);
+  border-color: rgba(199, 112, 147, 0.26);
+  color: var(--sakura-accent-deep);
+}
+
+body.editorial-themes .filter-btn:hover,
+body.editorial-themes .filter-chip:hover,
+body.editorial-themes .themes-stat-pill:hover {
+  background: rgba(216, 140, 169, 0.2);
+  border-color: rgba(199, 112, 147, 0.4);
+  color: var(--sakura-text-strong);
+}
+
+body.editorial-themes .filter-btn.active,
+body.editorial-themes .filter-chip.active {
+  background: var(--sakura-accent-deep);
+  border-color: var(--sakura-accent-deep);
+  color: #fff8fb;
+}
+
+@media (max-width: 768px) {
+  .preview-modal-container .modal-close-btn {
+    top: 0.9rem;
+    right: 0.9rem;
+    width: 36px;
+    height: 36px;
+    font-size: 0.72rem;
+  }
+}
