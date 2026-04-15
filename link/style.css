@@ -294,8 +294,10 @@ a {
 .showcase-card img {
   aspect-ratio: 16 / 10;
   width: 100%;
-  object-fit: cover;
-  object-position: top center;
+  object-fit: contain;
+  object-position: center top;
+  padding: 12px 12px 0;
+  background: linear-gradient(180deg, rgba(255, 247, 251, 0.96), rgba(249, 232, 240, 0.9));
 }
 
 .showcase-card div {
