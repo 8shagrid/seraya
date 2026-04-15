@@ -449,7 +449,7 @@ body {
 }
 
 /* ----- Mobile Menu ----- */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .mobile-menu {
     display: none;
   }
@@ -457,7 +457,7 @@ body {
   .mobile-menu.open {
     display: block;
     position: absolute;
-    top: 70px;
+    top: 100%;
     left: 0;
     right: 0;
     background: white;
@@ -3277,5 +3277,110 @@ body.editorial-themes .filter-chip.active {
     width: 36px;
     height: 36px;
     font-size: 0.72rem;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .editorial-header .editorial-nav,
+  .editorial-header .editorial-header-cta:not(.editorial-mobile-cta) {
+    display: none !important;
+  }
+
+  .editorial-header .editorial-menu-btn {
+    display: inline-flex !important;
+  }
+
+  .editorial-header .editorial-mobile-menu {
+    display: none !important;
+  }
+
+  .editorial-header .editorial-mobile-menu.open {
+    display: block !important;
+  }
+
+  .preview-modal-container {
+    width: calc(100vw - 24px);
+    max-width: 560px;
+    max-height: 95vh;
+    border-radius: 18px;
+  }
+
+  .modal-body {
+    flex-direction: column;
+    overflow: visible;
+  }
+
+  .modal-phone-panel {
+    border-right: 0;
+    border-bottom: 1px solid var(--sakura-card-border);
+    padding: 1.75rem 1.25rem 1.2rem;
+  }
+
+  .modal-preview-stage {
+    width: min(100%, 240px);
+    aspect-ratio: 400 / 810;
+    height: auto;
+  }
+
+  .modal-info-panel {
+    padding: 1.4rem 1.15rem 1.1rem;
+    gap: 0.75rem;
+  }
+
+  .preview-modal-container .modal-theme-name {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .preview-modal-container .modal-badges-row,
+  .modal-usage-row {
+    justify-content: center;
+  }
+
+  .preview-modal-container .modal-desc-text {
+    text-align: center;
+  }
+
+  .preview-modal-container .modal-btn-primary,
+  .preview-modal-container .modal-btn-secondary {
+    min-height: 56px;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+  }
+
+  .preview-modal-container .modal-close-btn {
+    top: 0.9rem;
+    right: 0.9rem;
+    width: 36px;
+    height: 36px;
+    font-size: 0.72rem;
+  }
+
+  .editorial-collage {
+    min-height: 540px;
+    max-width: 430px;
+  }
+
+  .editorial-photo-main {
+    left: 50%;
+    top: 0;
+    width: 280px;
+    height: 498px;
+    transform: translateX(-50%);
+  }
+
+  .editorial-photo-tall {
+    left: 0;
+    top: 92px;
+    width: 138px;
+    height: 220px;
+  }
+
+  .editorial-photo-small {
+    left: auto;
+    right: 0;
+    bottom: 18px;
+    width: 156px;
+    height: 146px;
   }
 }
