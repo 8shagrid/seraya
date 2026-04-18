@@ -1492,7 +1492,8 @@ body.editorial-home .editorial-gallery .theme-card-name {
 }
 
 .editorial-pricing-grid > .editorial-price-card:not(.editorial-price-card-featured) .editorial-price-value-small {
-  font-size: 1.82rem;
+  font-size: 1.15rem;
+  line-height: 1.1;
   color: rgba(77, 51, 64, 0.9);
 }
 
@@ -1571,6 +1572,13 @@ body.editorial-home .editorial-gallery .theme-card-name {
 
 .editorial-price-value-small {
   font-size: 2rem;
+}
+
+.editorial-price-value-subtitle {
+  font-size: 1.34rem;
+  line-height: 1.14;
+  color: rgba(77, 51, 64, 0.92);
+  margin: 4px 0 12px;
 }
 
 .editorial-price-copy {
