@@ -148,37 +148,47 @@ function buildTheme(rawTheme) {
 
 const themes = rawThemes.map(buildTheme);
 
-const featuredPoolConfig = [
-  { limit: 8, predicate: theme => theme.tipe.includes('Slide') },
-  { limit: 5, predicate: theme => theme.tipe.includes('Muslim') },
-  { limit: 5, predicate: theme => theme.tipe.includes('Budaya') },
-  { limit: 5, predicate: theme => theme.acara.includes('Pernikahan') },
-  { limit: 5, predicate: theme => theme.acara.includes('Aqiqah') || theme.tipe.includes('Anak') },
-  { limit: 4, predicate: theme => theme.acara.includes('Natal') },
-  { limit: 4, predicate: theme => theme.acara.includes('Formal') || theme.tipe.includes('Formal') },
-  { limit: 4, predicate: theme => theme.tipe.includes('Bunga') }
+const featuredThemeNames = [
+  'Customs-Anime',
+  'Maso-Rustic',
+  'Eternal-Arabic',
+  'Eternal-Buildings',
+  'Slide-Carousel-JavaBurgundy',
+  'Minang-Java',
+  'Aesthetic-Symphony',
+  'Slide-Floral-C',
+  'Customs-Minang',
+  'Customs-Batak',
+  'Customs-Nias',
+  'Customs-Chinese',
+  'Customs-Lampung',
+  'Customs-Bugis',
+  'Customs-Jambi',
+  'Customs Mongondow',
+  'Honey-Black'
 ];
 
-const featured = [];
-const usedIds = new Set();
+function normalizeThemeName(value) {
+  return normalizeText(value)
+    .toLowerCase()
+    .replace(/[-_\s]+/g, ' ');
+}
 
-for (const group of featuredPoolConfig) {
-  let count = 0;
-  for (const theme of themes) {
-    if (count >= group.limit) break;
-    if (usedIds.has(theme.id) || !group.predicate(theme)) continue;
-    usedIds.add(theme.id);
-    featured.push(theme);
-    count++;
+function findThemeByName(name) {
+  const normalizedName = normalizeThemeName(name);
+
+  return themes.find(theme => normalizeThemeName(theme.name) === normalizedName)
+    || themes.find(theme => normalizeThemeName(theme.name).startsWith(normalizedName))
+    || themes.find(theme => normalizeThemeName(theme.name).includes(normalizedName));
+}
+
+const featured = featuredThemeNames.map(name => {
+  const match = findThemeByName(name);
+  if (!match) {
+    throw new Error(`Featured theme not found in source data: ${name}`);
   }
-}
-
-for (const theme of themes) {
-  if (featured.length >= 36) break;
-  if (usedIds.has(theme.id)) continue;
-  usedIds.add(theme.id);
-  featured.push(theme);
-}
+  return match;
+});
 
 fs.writeFileSync(
   path.resolve(process.cwd(), 'js', 'data', 'themes-data.js'),
