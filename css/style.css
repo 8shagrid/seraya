@@ -1339,7 +1339,7 @@ body.editorial-home .editorial-gallery .theme-card-name {
 
 .editorial-section-head {
   max-width: 760px;
-  margin: 0 auto 42px;
+  margin: 0 auto 54px;
   text-align: center;
 }
 
@@ -1442,8 +1442,9 @@ body.editorial-home .editorial-gallery .theme-card-name {
 
 .editorial-step-card h3,
 .editorial-price-card h3 {
-  font-size: 2rem;
-  margin-bottom: 12px;
+  font-size: 1.7rem;
+  line-height: 1.15;
+  margin-bottom: 10px;
 }
 
 .editorial-pricing-grid {
@@ -1451,41 +1452,180 @@ body.editorial-home .editorial-gallery .theme-card-name {
 }
 
 .editorial-price-card {
-  padding: 34px 28px;
+  position: relative;
+  padding: 28px 32px 42px;
   text-align: center;
   display: grid;
   grid-template-rows: auto auto auto 1fr auto;
   row-gap: 0;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.editorial-price-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(186, 135, 159, 0.12);
+}
+
+.editorial-price-card-main {
+  grid-column: auto;
+  max-width: none;
+  margin: 0;
 }
 
 .editorial-price-card-featured {
-  background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248, 225, 235, 0.98));
-  transform: translateY(-10px);
+  background: white;
+  transform: translateY(-15px);
+  box-shadow: 0 40px 80px rgba(186, 135, 159, 0.22);
+  border: 1px solid rgba(216, 140, 169, 0.3);
+  z-index: 2;
+}
+
+.editorial-price-card-featured:hover {
+  transform: translateY(-20px);
+  box-shadow: 0 50px 90px rgba(186, 135, 159, 0.28);
+}
+
+.editorial-pricing-grid > .editorial-price-card:not(.editorial-price-card-featured) {
+  background: rgba(255, 252, 254, 0.72);
+  border: 1px solid rgba(216, 140, 169, 0.16);
+}
+
+.editorial-pricing-grid > .editorial-price-card:not(.editorial-price-card-featured) h3 {
+  font-size: 1.55rem;
+  margin-bottom: 8px;
+}
+
+.editorial-pricing-grid > .editorial-price-card:not(.editorial-price-card-featured) .editorial-price-value-small {
+  font-size: 1.82rem;
+  color: rgba(77, 51, 64, 0.9);
+}
+
+.editorial-pricing-grid > .editorial-price-card:not(.editorial-price-card-featured) .editorial-price-copy {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: rgba(95, 67, 80, 0.74);
+}
+
+.editorial-pricing-grid > .editorial-price-card:not(.editorial-price-card-featured) .editorial-price-list li {
+  font-size: 0.82rem;
+  color: rgba(95, 67, 80, 0.92);
+}
+
+.editorial-pricing-grid > .editorial-price-card:not(.editorial-price-card-featured) .editorial-price-btn {
+  min-width: 0;
+  padding: 13px 18px;
+  background: rgba(255, 251, 253, 0.92);
+}
+
+.editorial-price-card-featured h3 {
+  font-size: 1.92rem;
+}
+
+.editorial-price-card-featured .editorial-price-copy {
+  font-size: 1rem;
+}
+
+.editorial-price-card-featured .editorial-price-list li {
+  font-size: 0.88rem;
+}
+
+.price-badge {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--sakura-accent-strong), var(--sakura-accent-deep));
+  color: white;
+  padding: 10px 30px;
+  border-radius: 99px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  box-shadow: 0 12px 28px rgba(199, 112, 147, 0.42);
 }
 
 .editorial-price-label {
   font-size: 0.7rem;
   font-weight: 700;
   color: var(--sakura-muted);
-  margin-bottom: 14px;
+  margin-bottom: 8px;
 }
 
 .editorial-price-value {
   font-family: 'Cormorant Garamond', serif;
   font-size: 3.6rem;
   line-height: 1;
-  margin: 18px 0;
+  margin: 8px 0 18px;
   color: var(--sakura-text-strong);
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.editorial-price-old {
+  font-family: 'Manrope', sans-serif;
+  font-size: 1.28rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--sakura-muted);
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+}
+
+.editorial-price-value-small {
+  font-size: 2rem;
 }
 
 .editorial-price-copy {
-  min-height: 92px;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.editorial-price-list {
+  list-style: none;
+  margin: 0 0 18px;
+  padding: 0;
+  display: grid;
+  gap: 4px;
+  align-content: start;
+  justify-items: stretch;
+  text-align: left;
+}
+
+.price-check {
+  width: 18px;
+  height: 18px;
+  color: var(--sakura-accent-strong);
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.editorial-price-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: var(--sakura-text);
+  line-height: 1.5;
+  font-size: 0.84rem;
 }
 
 .editorial-price-btn {
   width: 100%;
   margin-top: 0;
+}
+
+.editorial-pricing-note {
+  max-width: 760px;
+  margin: 26px auto 0;
+  text-align: center;
+  color: var(--sakura-muted);
+}
+
+.editorial-pricing-note p {
+  margin: 0;
+  line-height: 1.7;
 }
 
 .editorial-faq-list {
@@ -1626,6 +1766,11 @@ body.editorial-home .editorial-gallery .theme-card-name {
   .editorial-step-grid,
   .editorial-pricing-grid {
     grid-template-columns: 1fr;
+  }
+
+  .editorial-price-card-main {
+    grid-column: auto;
+    max-width: none;
   }
 
   .editorial-collage {
