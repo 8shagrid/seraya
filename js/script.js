@@ -93,24 +93,47 @@ const PETAL_CONFIG = {
   maxDurationExtra: 5
 };
 
+function getPetalConfig() {
+  if (document.body.classList.contains('editorial-info-page')) {
+    return {
+      ...PETAL_CONFIG,
+      interval: 1300,
+      minSize: 10,
+      maxSizeExtra: 14,
+      minDuration: 5,
+      maxDurationExtra: 6
+    };
+  }
+
+  if (document.body.classList.contains('editorial-themes')) {
+    return {
+      ...PETAL_CONFIG,
+      interval: 1100,
+      minSize: 11,
+      maxSizeExtra: 16,
+      minDuration: 4.5,
+      maxDurationExtra: 5.5
+    };
+  }
+
+  return PETAL_CONFIG;
+}
+
 function createPetal() {
+  const petalConfig = getPetalConfig();
   const petal = document.createElement('div');
   petal.classList.add('sakura-petal');
   petal.textContent = '🌸';
   petal.style.left = `${Math.random() * 100}%`;
-  petal.style.fontSize = `${Math.random() * PETAL_CONFIG.maxSizeExtra + PETAL_CONFIG.minSize}px`;
-  petal.style.animationDuration = `${Math.random() * PETAL_CONFIG.maxDurationExtra + PETAL_CONFIG.minDuration}s`;
-  petal.style.animationDelay = `${Math.random() * 5}s`;
+  petal.style.fontSize = `${Math.random() * petalConfig.maxSizeExtra + petalConfig.minSize}px`;
+  petal.style.animationDuration = `${Math.random() * petalConfig.maxDurationExtra + petalConfig.minDuration}s`;
   document.body.appendChild(petal);
-  setTimeout(() => petal.remove(), PETAL_CONFIG.lifetime);
+  setTimeout(() => petal.remove(), petalConfig.lifetime);
 }
 
 function initSakuraPetals() {
-  if (
-    document.body.classList.contains('editorial-home') ||
-    document.body.classList.contains('editorial-themes')
-  ) return;
-  setInterval(createPetal, PETAL_CONFIG.interval);
+  const petalConfig = getPetalConfig();
+  setInterval(createPetal, petalConfig.interval);
 }
 
 // =============================================

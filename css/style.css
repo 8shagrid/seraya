@@ -984,10 +984,6 @@ body.editorial-home .editorial-gallery .theme-card-name {
   font-family: 'Cormorant Garamond', serif;
 }
 
-.editorial-home .sakura-petal {
-  display: none;
-}
-
 .editorial-shell {
   width: min(1240px, calc(100% - 32px));
   margin: 28px auto;
