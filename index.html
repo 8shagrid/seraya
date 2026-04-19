@@ -34,9 +34,9 @@
     content="Undangan digital premium yang membuat momen spesial terasa lebih rapi, lebih berkelas, dan lebih berkesan.">
   <meta name="twitter:image" content="https://seraya.my.id/assets/img/logo.png">
   <meta name="twitter:image:alt" content="Logo Seraya">
-  <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon-96.png">
-  <link rel="shortcut icon" type="image/png" href="assets/img/favicon-96.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon-180.png">
+  <link rel="icon" type="image/png" href="assets/img/logo.png">
+  <link rel="shortcut icon" type="image/png" href="assets/img/logo.png">
+  <link rel="apple-touch-icon" href="assets/img/logo.png">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -156,7 +156,6 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap"
     rel="stylesheet">
-  <link rel="preload" as="image" href="assets/media/hero-preview-720.webp" type="image/webp" fetchpriority="high">
   <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -175,11 +174,7 @@
     <header class="editorial-header">
       <div class="editorial-header-inner">
         <a href="#home" class="editorial-brand" aria-label="Seraya home">
-          <picture>
-            <source srcset="assets/img/logo-utama-360.webp" type="image/webp">
-            <img src="assets/img/logo-utama.png" alt="Seraya Logo" class="editorial-brand-logo" width="360"
-              height="86" decoding="async">
-          </picture>
+          <img src="assets/img/logo-utama.png" alt="Seraya Logo" class="editorial-brand-logo">
         </a>
 
         <nav class="editorial-nav hidden md:flex" aria-label="Primary navigation">
@@ -195,7 +190,7 @@
           Konsultasi WA
         </a>
 
-        <button id="menuBtn" class="editorial-menu-btn md:hidden" type="button" aria-label="Toggle navigation menu">
+        <button id="menuBtn" class="editorial-menu-btn md:hidden" aria-label="Toggle navigation menu">
           <span class="ui-icon ui-icon-menu" aria-hidden="true"></span>
         </button>
       </div>
@@ -219,11 +214,8 @@
       <section id="home" class="editorial-hero">
         <div class="editorial-hero-frame">
           <div class="editorial-hero-media">
-            <picture>
-              <source srcset="assets/media/hero-preview-720.webp" type="image/webp">
-              <img src="assets/media/8775893-uhd_3840_2160_25fps.gif" alt="Preview undangan digital Seraya"
-                class="editorial-hero-image" loading="eager" decoding="async" fetchpriority="high">
-            </picture>
+            <img src="assets/media/8775893-uhd_3840_2160_25fps.gif" alt="Preview undangan digital Seraya"
+              class="editorial-hero-image" loading="eager" decoding="async" fetchpriority="high">
           </div>
 
           <div class="editorial-intro-card">
@@ -251,11 +243,8 @@
               <div class="editorial-photo-fill editorial-photo-blush"></div>
             </article>
             <article class="editorial-photo editorial-photo-main">
-              <picture>
-                <source srcset="assets/media/story-detail-still-720.webp" type="image/webp">
-                <img src="assets/media/lv_0_202604151240004.gif" alt="Detail undangan Seraya"
-                  class="editorial-photo-image" loading="lazy" decoding="async" fetchpriority="low">
-              </picture>
+              <img src="assets/media/lv_0_202604151240004.gif" alt="Detail undangan Seraya"
+                class="editorial-photo-image" loading="eager" decoding="sync" fetchpriority="high">
             </article>
             <article class="editorial-photo editorial-photo-small">
               <div class="editorial-photo-fill editorial-photo-cream"></div>
@@ -454,13 +443,13 @@
       </section>
 
       <section id="faq" class="editorial-faq">
-        <div class="editorial-section-head editorial-faq-head">
+        <div class="editorial-section-head" style="text-align: center; margin-bottom: 48px;">
           <p class="editorial-eyebrow">Common Questions</p>
           <h2 class="editorial-faq-title">Pertanyaan yang paling sering muncul sebelum calon klien memutuskan order.
           </h2>
         </div>
 
-        <div class="editorial-faq-list editorial-faq-list-narrow">
+        <div class="editorial-faq-list" style="max-width: 800px; margin: 0 auto;">
           <article class="editorial-faq-item">
             <div class="faq-header">
               <h3>Apakah undangan tetap nyaman dibuka di HP?</h3>
@@ -564,7 +553,7 @@
     <footer class="editorial-footer">
       <p>&copy; 2026 Seraya. Semua Kita Rayakan.</p>
       <p>Undangan digital elegan untuk momen yang ingin kamu rayakan dengan indah.</p>
-      <div class="editorial-footer-social" role="group" aria-label="Media sosial Seraya">
+      <div class="editorial-footer-social" aria-label="Media sosial Seraya">
         <a href="mailto:halo@seraya.my.id" class="editorial-social-link" aria-label="Email Seraya halo@seraya.my.id"
           title="Email halo@seraya.my.id">
           <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
