@@ -331,9 +331,12 @@ a {
     grid-template-columns: 1fr 1fr;
   }
 
-  .feature-strip,
-  .showcase-grid {
+  .feature-strip {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .showcase-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .links-panel {
