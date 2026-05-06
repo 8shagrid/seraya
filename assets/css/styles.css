@@ -518,9 +518,9 @@ nav {
 }
 
 .hero-card[data-card-id="premium"] {
-    top: -48px;
-    left: 20px;
-    --card-transform: rotate(3deg);
+    top: 336px;
+    left: 88px;
+    --card-transform: rotate(4deg);
     --card-surface: #fff6f8;
     --card-surface-deep: #f7dde7;
     --card-surface-hover: #fff9fb;
@@ -533,8 +533,8 @@ nav {
     --card-shadow-hover: rgba(128, 72, 94, 0.22);
     --card-glow: rgba(184, 104, 134, 0.14);
     --card-image-border: rgba(184, 104, 134, 0.2);
-    animation-delay: 0s;
-    z-index: 3;
+    animation-delay: 3s;
+    z-index: 5;
 }
 
 .hero-card[data-card-id="premium"]::before {
@@ -576,9 +576,9 @@ nav {
 }
 
 .hero-card[data-card-id="motion"] {
-    top: 336px;
-    left: 88px;
-    --card-transform: rotate(4deg);
+    top: -48px;
+    left: 20px;
+    --card-transform: rotate(3deg);
     --card-surface: #f5f1f7;
     --card-surface-deep: #ddd2e4;
     --card-surface-hover: #fbf8fc;
@@ -591,8 +591,8 @@ nav {
     --card-shadow-hover: rgba(52, 39, 64, 0.27);
     --card-glow: rgba(95, 73, 116, 0.2);
     --card-image-border: rgba(95, 73, 116, 0.22);
-    animation-delay: 3s;
-    z-index: 5;
+    animation-delay: 0s;
+    z-index: 3;
 }
 
 .hero-card[data-card-id="motion"]::before {
