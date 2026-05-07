@@ -377,19 +377,38 @@ function initMobileMenu() {
     const navLinks = document.querySelector('.nav-links');
     if (!hamburger || !navLinks) return;
 
+    const setMenuState = (isOpen) => {
+        navLinks.classList.toggle('is-open', isOpen);
+        hamburger.classList.toggle('is-open', isOpen);
+        hamburger.setAttribute('aria-expanded', String(isOpen));
+        hamburger.setAttribute('aria-label', isOpen ? 'Tutup menu navigasi' : 'Buka menu navigasi');
+    };
+
     hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('is-open');
+        setMenuState(!navLinks.classList.contains('is-open'));
     });
 
     navLinks.addEventListener('click', (event) => {
-        if (event.target.closest('a')) navLinks.classList.remove('is-open');
+        if (event.target.closest('a')) setMenuState(false);
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') setMenuState(false);
+    });
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 1024) setMenuState(false);
+    }, { passive: true });
+
+    document.addEventListener('click', (event) => {
+        if (!navLinks.classList.contains('is-open')) return;
+        if (event.target.closest('.nav-inner')) return;
+        setMenuState(false);
     });
 
     // Close menu on scroll
     window.addEventListener('scroll', () => {
-        if (navLinks.classList.contains('is-open')) {
-            navLinks.classList.remove('is-open');
-        }
+        if (navLinks.classList.contains('is-open')) setMenuState(false);
     }, { passive: true });
 }
 
@@ -418,6 +437,7 @@ function initHeroCards() {
     const heroCardsWrap = document.querySelector('.hero-cards');
     const heroCards = document.querySelectorAll('.hero-card');
     if (!heroCardsWrap || !heroCards.length) return;
+    if (!window.matchMedia('(min-width: 1200px)').matches) return;
 
     const cardReturnTimers = new WeakMap();
 
