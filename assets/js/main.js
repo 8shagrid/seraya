@@ -239,9 +239,23 @@ function updatePrices(mode) {
         const [oldPrice, currentPrice] = selectedPrices[key];
         const oldPriceElement = document.getElementById(`${key}-old`);
         const currentPriceElement = document.getElementById(`${key}-price`);
+        const nameElement = document.getElementById(`${key}-name`);
 
         if (oldPriceElement) oldPriceElement.textContent = `Rp ${oldPrice}`;
         if (currentPriceElement) currentPriceElement.innerHTML = `<small>Rp</small> ${currentPrice}`;
+        
+        if (nameElement) {
+            const baseName = key.charAt(0).toUpperCase() + key.slice(1);
+            nameElement.textContent = mode === 'nofoto' ? `${baseName} - Tanpa Foto` : baseName;
+        }
+
+        const ctaElement = document.getElementById(`${key}-cta`);
+        if (ctaElement) {
+            const baseName = key.charAt(0).toUpperCase() + key.slice(1);
+            const suffix = mode === 'nofoto' ? ' - Tanpa Foto' : '';
+            ctaElement.textContent = `Pesan ${baseName}${suffix}`;
+            ctaElement.href = `https://wa.me/6289679160870?text=Halo%20admin%20Seraya,%20saya%20ingin%20memesan%20undangan%20paket%20${baseName}${suffix}`;
+        }
     });
 }
 
