@@ -1277,7 +1277,7 @@ section {
     .themes-grid {
         grid-template-columns: repeat(3, 1fr);
     }
-    
+
     .themes-grid.themes-grid-dense {
         grid-template-columns: repeat(4, 1fr);
     }
@@ -2166,7 +2166,7 @@ footer {
     }
 
     .hero-visual {
-        transform: scale(1);
+        transform: translate(-114px, 36px) scale(1);
     }
 }
 
@@ -2439,7 +2439,7 @@ footer {
         margin-top: 44px;
     }
 
-    .hero-stats > div {
+    .hero-stats>div {
         background: none;
         border: none;
         box-shadow: none;
