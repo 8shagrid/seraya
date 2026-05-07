@@ -118,12 +118,13 @@ const OTHER_EVENTS = [
 ];
 
 const THEME_CATEGORIES = [
-    { id: 'motion', label: 'Motion', note: 'Untuk kamu yang ingin undangan terasa lebih hidup, sinematik, dan berkesan sejak pertama kali dibuka.', names: [...MOTION_UMUM, ...MOTION_ISLAMIC, ...MOTION_ADAT] },
+    { id: 'motion', label: 'Motion', note: 'Untuk kamu yang ingin undangan terasa lebih hidup, dinamis, dan berkesan sejak pertama kali dibuka.', names: [...MOTION_UMUM, ...MOTION_ISLAMIC, ...MOTION_ADAT] },
     { id: 'motion-tanpa-foto', label: 'Motion Tanpa Foto', note: 'Tetap dramatis dan elegan tanpa foto pribadi, cocok untuk tampilan yang lebih clean dan universal.', names: [...MOTION_UMUM, ...MOTION_ISLAMIC, ...MOTION_ADAT], noPhoto: true },
     { id: 'luxury', label: 'Luxury', note: 'Pilihan desain dengan nuansa mewah, dewasa, dan timeless untuk momen yang ingin tampil lebih premium.', names: LUXURY },
     { id: 'luxury-tanpa-foto', label: 'Luxury Tanpa Foto', note: 'Kesan luxury yang rapi dan eksklusif, tanpa perlu menampilkan foto di bagian utama undangan.', names: LUXURY, noPhoto: true },
     { id: 'premium', label: 'Premium', note: 'Koleksi floral, rustic, dan elegant yang fleksibel untuk banyak konsep acara romantis.', names: PREMIUM },
     { id: 'premium-tanpa-foto', label: 'Premium Tanpa Foto', note: 'Tampilan premium yang tetap manis dan personal meski tanpa foto pasangan.', names: PREMIUM, noPhoto: true },
+    { id: 'premium-lainnya', label: 'Premium Lainnya', note: 'Koleksi tema premium klasik dari versi sebelumnya dengan desain abadi.', names: typeof PREMIUM_LAINNYA_DATA !== 'undefined' ? PREMIUM_LAINNYA_DATA : [], isLegacy: true },
     { id: 'basic', label: 'Basic', note: 'Desain ringan, praktis, dan tetap cantik untuk undangan yang ingin terlihat simple tanpa terasa polos.', names: BASIC, basic: true },
     { id: 'acara-lainnya', label: 'Acara Lainnya', note: 'Tema siap pakai untuk khitan, aqiqah, dan ulang tahun dengan karakter visual yang lebih playful.', names: OTHER_EVENTS, other: true },
 ];
@@ -180,6 +181,8 @@ function getBasicImage(name) {
 }
 
 function getThemeImage(category, name) {
+    if (category.isLegacy) return name.thumbnail;
+
     if (category.id.startsWith('motion')) {
         return `assets/mockup/Motion Series/${getMotionGroup(name)}/${motionImageName(name, category.noPhoto)}`
     }
@@ -190,6 +193,8 @@ function getThemeImage(category, name) {
 }
 
 function getThemeUrl(category, name) {
+    if (category.isLegacy) return name.url;
+
     const slug = slugifyThemeName(name);
 
     if (category.basic || category.other) {
@@ -200,6 +205,8 @@ function getThemeUrl(category, name) {
 }
 
 function getThemeDisplayName(category, name) {
+    if (category.isLegacy) return name.name.replace(/-C$/, '').replace(/-/g, ' ');
+
     if (!category.noPhoto) return padThemeNumber(name);
     return `${padThemeNumber(name)} TF`;
 }
@@ -282,6 +289,7 @@ function initFeatureItems() {
 function createThemeCard(category, name) {
     const article = document.createElement('article');
     article.className = 'theme-card';
+    if (category.id === 'premium-lainnya') article.classList.add('no-image-hover');
 
     const media = document.createElement('div');
     media.className = 'theme-media';
