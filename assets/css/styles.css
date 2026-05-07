@@ -181,6 +181,7 @@ nav {
 /* ── HERO ── */
 #hero {
     height: 100vh;
+    min-height: 760px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -2525,4 +2526,55 @@ footer {
 
 .reveal-delay-3 {
     transition-delay: .3s;
+}
+
+@media (min-width: 1401px) and (max-width: 1536px) and (max-height: 950px) {
+    #hero {
+        padding-top: 108px;
+    }
+
+    .hero-inner {
+        gap: 96px;
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    }
+
+    .hero-content {
+        transform: translateY(-10px);
+    }
+
+    .hero-tag {
+        margin-bottom: 22px;
+    }
+
+    #hero h1 {
+        font-size: 58px;
+        line-height: 1.08;
+        margin-bottom: 20px;
+    }
+
+    .hero-desc {
+        font-size: 16px;
+        line-height: 1.65;
+        margin-bottom: 28px;
+        max-width: 470px;
+    }
+
+    .hero-stats {
+        margin-top: 28px;
+    }
+
+    .hero-visual {
+        min-height: 520px;
+        transform: translateY(40px) scale(0.78);
+        transform-origin: center top;
+    }
+
+    .hero-cards {
+        width: 700px;
+        height: 560px;
+    }
+
+    .marquee-section {
+        padding: 16px 0;
+    }
 }
