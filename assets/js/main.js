@@ -126,7 +126,9 @@ const THEME_CATEGORIES = [
     { id: 'premium-tanpa-foto', label: 'Premium Tanpa Foto', note: 'Tampilan premium yang tetap manis dan personal meski tanpa foto pasangan.', names: PREMIUM, noPhoto: true },
     { id: 'premium-lainnya', label: 'Premium Lainnya', note: 'Koleksi tema premium klasik dari versi sebelumnya dengan desain abadi.', names: typeof PREMIUM_LAINNYA_DATA !== 'undefined' ? PREMIUM_LAINNYA_DATA : [], isLegacy: true },
     { id: 'basic', label: 'Basic', note: 'Desain ringan, praktis, dan tetap cantik untuk undangan yang ingin terlihat simple tanpa terasa polos.', names: BASIC, basic: true },
+    { id: 'basic-lainnya', label: 'Basic Lainnya', note: 'Koleksi tema simple dan manis dari versi sebelumnya.', names: typeof BASIC_LAINNYA_DATA !== 'undefined' ? BASIC_LAINNYA_DATA : [], isLegacy: true },
     { id: 'acara-lainnya', label: 'Acara Lainnya', note: 'Tema siap pakai untuk khitan, aqiqah, dan ulang tahun dengan karakter visual yang lebih playful.', names: OTHER_EVENTS, other: true },
+    { id: 'acara-lainnya-2', label: 'Acara Lainnya 2', note: 'Berbagai tema khusus untuk momen spesial di luar pernikahan dari versi lawas.', names: typeof ACARA_LAINNYA_2_DATA !== 'undefined' ? ACARA_LAINNYA_2_DATA : [], isLegacy: true },
 ];
 
 function slugifyThemeName(name) {
@@ -289,7 +291,7 @@ function initFeatureItems() {
 function createThemeCard(category, name) {
     const article = document.createElement('article');
     article.className = 'theme-card';
-    if (category.id === 'premium-lainnya') article.classList.add('no-image-hover');
+    if (category.isLegacy) article.classList.add('no-image-hover');
 
     const media = document.createElement('div');
     media.className = 'theme-media';
@@ -332,6 +334,12 @@ function renderThemes(categoryId) {
     const summary = document.getElementById('themeSummary');
     const category = THEME_CATEGORIES.find((item) => item.id === categoryId) || THEME_CATEGORIES[0];
     if (!grid || !summary || !category) return;
+
+    if (category.isLegacy) {
+        grid.classList.add('themes-grid-dense');
+    } else {
+        grid.classList.remove('themes-grid-dense');
+    }
 
     grid.innerHTML = '';
     category.names.forEach((name) => {

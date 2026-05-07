@@ -1123,6 +1123,11 @@ section {
     margin-top: 26px;
 }
 
+.themes-grid.themes-grid-dense {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+}
+
 .theme-card {
     background: white;
     border-radius: 18px;
@@ -1162,11 +1167,25 @@ section {
     margin-bottom: 4px;
 }
 
+.themes-grid-dense .theme-info h3 {
+    font-size: 16px;
+    margin-bottom: 2px;
+}
+
 .theme-info p {
     font-size: 13px;
     color: var(--brown-soft);
     letter-spacing: .04em;
     text-transform: uppercase;
+}
+
+.themes-grid-dense .theme-info p {
+    font-size: 10px;
+    letter-spacing: .02em;
+}
+
+.themes-grid-dense .theme-info {
+    padding: 10px;
 }
 
 .theme-actions {
@@ -1189,6 +1208,12 @@ section {
     text-decoration: none;
     text-transform: uppercase;
     transition: background .2s;
+}
+
+.themes-grid-dense .theme-link {
+    font-size: 10px;
+    padding: 6px 10px;
+    letter-spacing: .02em;
 }
 
 .theme-link:hover {
@@ -1252,6 +1277,10 @@ section {
     .themes-grid {
         grid-template-columns: repeat(3, 1fr);
     }
+    
+    .themes-grid.themes-grid-dense {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 
 @media (max-width: 600px) {
@@ -1265,6 +1294,10 @@ section {
         grid-template-columns: 1fr;
     }
 
+    .themes-grid.themes-grid-dense {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
 }
 
 .pricing-grid {
