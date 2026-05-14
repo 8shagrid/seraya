@@ -218,13 +218,15 @@ function shareToWA(index) {
     const name = guestNames[index];
     if (!name) return;
     const chat = makeChat(name);
-    const waLink = `https://wa.me/?text=${encodeURIComponent(chat)}`;
+    // Menggunakan skema URL native untuk langsung membuka aplikasi WhatsApp
+    const waLink = `whatsapp://send?text=${encodeURIComponent(chat)}`;
     window.open(waLink, "_blank");
 }
 
 function makeWhatsAppUrl(name) {
     const chat = makeChat(name);
-    return `https://wa.me/?text=${encodeURIComponent(chat)}`;
+    // Menggunakan skema URL native
+    return `whatsapp://send?text=${encodeURIComponent(chat)}`;
 }
 
 function escapeHTML(text) { return String(text).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;"); }
