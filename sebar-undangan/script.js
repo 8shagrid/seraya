@@ -165,7 +165,7 @@ function makeChat(name) {
 
 function makeWhatsAppUrl(name) {
     const chat = makeChat(name);
-    return "https://wa.me/?text=" + encodeURIComponent(chat);
+    return "https://api.whatsapp.com/send?text=" + encodeURIComponent(chat);
 }
 
 function escapeHTML(text) { return String(text).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;"); }
