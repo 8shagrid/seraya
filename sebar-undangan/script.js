@@ -301,10 +301,26 @@ function importExcel(event) {
             const sheet = workbook.Sheets[workbook.SheetNames[0]];
             const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 });
             if (rows.length === 0) return showToast("File Excel kosong", "error");
-            const headers = rows[0].map(h => String(h || "").toLowerCase().trim());
+            
+            // Find the row index that contains the header (contains "nama" or "name")
+            const headerRowIndex = rows.findIndex(row => 
+                row.some(cell => {
+                    const val = String(cell || "").toLowerCase().trim();
+                    return val.includes("nama") || val.includes("name");
+                })
+            );
+
             let names = [];
-            const idx = headers.indexOf("nama") !== -1 ? headers.indexOf("nama") : headers.indexOf("name");
-            if (idx !== -1) { names = rows.slice(1).map(r => r[idx]); } else { names = rows.map(r => r[0]); }
+            if (headerRowIndex !== -1) {
+                const headers = rows[headerRowIndex].map(h => String(h || "").toLowerCase().trim());
+                const idx = headers.findIndex(h => h.includes("nama") || h.includes("name"));
+                // Take all rows AFTER the detected header row
+                names = rows.slice(headerRowIndex + 1).map(r => r[idx]);
+            } else {
+                // Fallback: Skip first row as requested if no header keywords found
+                names = rows.slice(1).map(r => r[0]);
+            }
+
             setGuestNames(names);
             showToast(`${names.length} nama berhasil diimport`, "success");
             event.target.value = "";
