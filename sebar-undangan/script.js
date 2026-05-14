@@ -24,6 +24,40 @@ const detailWaButton = document.getElementById("detailWaButton");
 
 const STORAGE_KEY = "seraya_generator_data";
 
+const defaultTemplate = `Yth. Bapak/Ibu/Saudara/i
+[NAMA]
+Di Tempat
+-----------
+Dengan segala kerendahan hati, kami mengundang Bapak/Ibu/Saudara/i dan teman-teman untuk menghadiri acara,
+===========
+The Wedding of Gina & Joko
+===========
+Pada: Akad nikah
+\uD83D\uDCC5 Tanggal: 06-06-2026
+\u23F0 Pukul: 09:00 - 10:00
+\uD83D\uDCCD Lokasi: Jl. Datuk Kuba Batu Bara, Dusun 1 Kwala Gunung (kp.durian)
+
+Pada: Resepsi
+\uD83D\uDCC5 Tanggal: 06-06-2026
+\u23F0 Pukul: 10:00 - Selesai
+\uD83D\uDCCD Lokasi: Jl. Datuk Kuba Batu Bara, Dusun 1 Kwala Gunung (kp.durian)
+
+Pada: Ngunduh Mantu
+\uD83D\uDCC5 Tanggal: 13-06-2026
+\u23F0 Pukul: 08:00 - Selesai
+\uD83D\uDCCD Lokasi: Dusun 1 Suka Makmur
+
+Link undangan bisa diakses lengkap di:
+[LINK]
+
+Merupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan untuk hadir di acara kami
+Mohon maaf perihal undangan hanya di bagikan melalui pesan ini
+Terima kasih banyak atas perhatiannya
+
+
+Note:
+Untuk mendapatkan hasil yg bagus, harap buka melalui google chrome terupdate dan matikan mode gelap dari hp`;
+
 let guestNames = [];
 
 // Support Enter key for modals
@@ -45,22 +79,35 @@ function saveData() {
 
 function loadData() {
     const saved = localStorage.getItem(STORAGE_KEY);
+    let forceFix = false;
+
     if (saved) {
         try {
             const data = JSON.parse(saved);
             if (data.domain) domainInput.value = data.domain;
             
             if (data.template) {
-                // If the saved template contains the Unicode Replacement Character (broken emoji),
-                // we ignore it and keep the default template from the HTML.
-                if (!data.template.includes('\uFFFD')) {
+                if (!data.template.includes('\uFFFD') && !data.template.includes('')) {
                     templateInput.value = data.template;
+                } else {
+                    forceFix = true;
                 }
             }
             
             if (data.names) guestNames = data.names;
         } catch (e) { console.error("Gagal memuat data tersimpan", e); }
     }
+    
+    // Check if the current value (from storage or HTML) is still broken
+    if (templateInput.value.includes('\uFFFD') || templateInput.value.includes('')) {
+        forceFix = true;
+    }
+
+    if (forceFix) {
+        templateInput.value = defaultTemplate;
+        saveData(); // Overwrite the bad data in storage
+    }
+
     renderTable();
     if (window.lucide) window.lucide.createIcons();
 }
