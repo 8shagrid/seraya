@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generator Sebar Undangan - Seraya Studio</title>
+    <title>Generator Link Sebar Undangan - Seraya Invitation Studio</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap"
         rel="stylesheet">
@@ -16,8 +16,9 @@
     <!-- Open Graph / WhatsApp Preview -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://seraya.my.id/sebar-undangan">
-    <meta property="og:title" content="Generator Sebar Undangan - Seraya Studio">
-    <meta property="og:description" content="Kelola daftar tamu dan buat link undangan WhatsApp personal secara otomatis.">
+    <meta property="og:title" content="Generator Link Sebar Undangan - Seraya Invitation Studio">
+    <meta property="og:description"
+        content="Kelola daftar tamu dan buat link undangan WhatsApp personal secara otomatis.">
     <meta property="og:image" content="https://seraya.my.id/assets/img/logo.png">
 </head>
 
@@ -48,7 +49,7 @@
         <!-- HEADER / HERO -->
         <section id="generator-hero">
             <div class="generator-container">
-                <div class="section-label section-label-center reveal">Studio Tools</div>
+                <div class="section-label section-label-center reveal">Seraya Invitation Studio</div>
                 <h1 class="section-title section-title-center reveal">Generator Sebar<br>Undangan <em>WhatsApp</em></h1>
                 <p class="section-desc section-note-center reveal" style="max-width: 600px;">
                     Kelola daftar tamu dan buat pesan undangan personal secara otomatis. Memudahkan distribusi undangan
@@ -118,8 +119,13 @@ Untuk mendapatkan hasil yg bagus, harap buka melalui google chrome terupdate dan
                         <div class="guest-counter">Total Tamu: <span id="totalGuest">0</span></div>
                         <button class="btn-sort-mobile" onclick="toggleSort()" title="Urutkan">
                             <span id="mobileSortIcon">
-                                <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="m3 16 4 4 4-4"></path><path d="M7 20V4"></path><path d="M11 4h10"></path><path d="M11 8h7"></path><path d="M11 12h4"></path>
+                                <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2"
+                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="m3 16 4 4 4-4"></path>
+                                    <path d="M7 20V4"></path>
+                                    <path d="M11 4h10"></path>
+                                    <path d="M11 8h7"></path>
+                                    <path d="M11 12h4"></path>
                                 </svg>
                             </span>
                         </button>
@@ -130,7 +136,8 @@ Untuk mendapatkan hasil yg bagus, harap buka melalui google chrome terupdate dan
                             </button>
 
                             <!-- Data Management -->
-                            <button class="btn-outline btn-small" onclick="triggerImportExcel()" title="Import dari Excel">
+                            <button class="btn-outline btn-small" onclick="triggerImportExcel()"
+                                title="Import dari Excel">
                                 <i data-lucide="file-up"></i> Import
                             </button>
                             <button class="btn-outline btn-small" onclick="exportExcel()" title="Export ke Excel">
@@ -150,10 +157,14 @@ Untuk mendapatkan hasil yg bagus, harap buka melalui google chrome terupdate dan
                         <table class="custom-table">
                             <thead>
                                 <tr>
-                                    <th class="no-col" onclick="toggleSort()" style="cursor: pointer; user-select: none; min-width: 90px;">
+                                    <th class="no-col" onclick="toggleSort()"
+                                        style="cursor: pointer; user-select: none; min-width: 90px;">
                                         <div style="display: flex; align-items: center; gap: 6px;">
-                                            No <span id="sortIcon" style="display: inline-flex; color: var(--pink-deep);">
-                                                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            No <span id="sortIcon"
+                                                style="display: inline-flex; color: var(--pink-deep);">
+                                                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor"
+                                                    stroke-width="3" fill="none" stroke-linecap="round"
+                                                    stroke-linejoin="round">
                                                     <polyline points="6 9 12 15 18 9"></polyline>
                                                 </svg>
                                             </span>
@@ -177,7 +188,7 @@ Untuk mendapatkan hasil yg bagus, harap buka melalui google chrome terupdate dan
         <!-- CTA SECTION (Optional for consistency) -->
         <section id="cta" class="reveal">
             <div class="cta-inner">
-                <div class="cta-label">✦ Seraya Studio</div>
+                <div class="cta-label">✦ Seraya Invitation Studio</div>
                 <h2 class="cta-title">Siap Kirim Undanganmu?</h2>
                 <p class="cta-desc">Pastikan semua data sudah benar sebelum menyebarkan link ke tamu undangan.</p>
                 <div class="cta-btns">
@@ -270,7 +281,8 @@ Untuk mendapatkan hasil yg bagus, harap buka melalui google chrome terupdate dan
                 <button class="btn-outline btn-small" onclick="closeDetail()">Tutup</button>
                 <button class="btn-primary btn-small" id="detailWaButton">
                     <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px; height:18px; margin-right: 8px;">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.148-.67-1.615-.918-2.214-.242-.581-.487-.502-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.432 5.631 1.434h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.148-.67-1.615-.918-2.214-.242-.581-.487-.502-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.432 5.631 1.434h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                     </svg> Sebar ke WhatsApp
                 </button>
             </div>
@@ -331,7 +343,8 @@ Untuk mendapatkan hasil yg bagus, harap buka melalui google chrome terupdate dan
             </div>
             <div class="modal-body" style="text-align: center; padding: 40px 24px;">
                 <input type="hidden" id="deleteIndex">
-                <div style="background: #fff1f2; width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                <div
+                    style="background: #fff1f2; width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
                     <i data-lucide="trash-2" style="color: #e11d48; width: 32px; height: 32px;"></i>
                 </div>
                 <p style="color: var(--charcoal); font-weight: 500; margin-bottom: 8px;">Hapus tamu ini?</p>
@@ -339,7 +352,9 @@ Untuk mendapatkan hasil yg bagus, harap buka melalui google chrome terupdate dan
             </div>
             <div class="modal-footer" style="background: white; border-top: 1px solid rgba(0,0,0,0.05);">
                 <button class="btn-outline btn-small" onclick="closeDeleteModal()">Batal</button>
-                <button class="btn-primary btn-small" style="background: #e11d48; border: none; box-shadow: 0 10px 20px rgba(225, 29, 72, 0.2);" onclick="submitDelete()">
+                <button class="btn-primary btn-small"
+                    style="background: #e11d48; border: none; box-shadow: 0 10px 20px rgba(225, 29, 72, 0.2);"
+                    onclick="submitDelete()">
                     Ya, Hapus
                 </button>
             </div>
@@ -354,15 +369,19 @@ Untuk mendapatkan hasil yg bagus, harap buka melalui google chrome terupdate dan
                 <button class="modal-close" onclick="closeResetModal()"><i data-lucide="x"></i></button>
             </div>
             <div class="modal-body" style="text-align: center; padding: 40px 24px;">
-                <div style="background: #fff1f2; width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                <div
+                    style="background: #fff1f2; width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
                     <i data-lucide="refresh-cw" style="color: #e11d48; width: 32px; height: 32px;"></i>
                 </div>
                 <p style="color: var(--charcoal); font-weight: 500; margin-bottom: 8px;">Bersihkan semua data?</p>
-                <p style="font-size: 14px; color: #8a707d;">Daftar tamu dan setelan domain akan dikembalikan ke awal.</p>
+                <p style="font-size: 14px; color: #8a707d;">Daftar tamu dan setelan domain akan dikembalikan ke awal.
+                </p>
             </div>
             <div class="modal-footer" style="background: white; border-top: 1px solid rgba(0,0,0,0.05);">
                 <button class="btn-outline btn-small" onclick="closeResetModal()">Batal</button>
-                <button class="btn-primary btn-small" style="background: #e11d48; border: none; box-shadow: 0 10px 20px rgba(225, 29, 72, 0.2);" onclick="submitReset()">
+                <button class="btn-primary btn-small"
+                    style="background: #e11d48; border: none; box-shadow: 0 10px 20px rgba(225, 29, 72, 0.2);"
+                    onclick="submitReset()">
                     Ya, Reset Semua
                 </button>
             </div>
