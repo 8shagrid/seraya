@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator Sebar Undangan - Seraya Studio</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <link rel="icon" type="image/png" href="../assets/img/logo.png">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav aria-label="Navigasi utama">
+        <div class="nav-inner">
+            <a href="../" class="logo">
+                <img src="../assets/img/logo-utama.png" alt="Seraya Logo" fetchpriority="high" decoding="async">
+            </a>
+            <ul class="nav-links" id="primaryNav">
+                <li><a href="../#services">Layanan</a></li>
+                <li><a href="../#themes">Tema</a></li>
+                <li><a href="../#pricing">Paket</a></li>
+                <li><a href="../#features">Fitur</a></li>
+                <li><a href="../#faq">FAQ</a></li>
+                <li><a href="https://wa.me/6289679160870" class="nav-cta">Konsultasi</a></li>
+            </ul>
+            <button class="hamburger" type="button" aria-controls="primaryNav" aria-expanded="false"
+                aria-label="Buka menu navigasi">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <!-- HEADER / HERO -->
+        <section id="generator-hero">
+            <div class="generator-container">
+                <div class="section-label section-label-center reveal">Studio Tools</div>
+                <h1 class="section-title section-title-center reveal">Generator Sebar<br>Undangan <em>WhatsApp</em></h1>
+                <p class="section-desc section-note-center reveal" style="max-width: 600px;">
+                    Kelola daftar tamu dan buat pesan undangan personal secara otomatis. Memudahkan distribusi undangan
+                    digital ke orang-orang tersayang.
+                </p>
+            </div>
+        </section>
+
+        <!-- FORM SECTION -->
+        <section class="generator-section">
+            <div class="generator-container">
+                <div class="card-glass reveal">
+                    <div class="generator-grid">
+                        <div class="field-item" style="grid-column: 1 / -1;">
+                            <label class="field-label" for="domainInput">Domain Undangan</label>
+                            <input id="domainInput" type="text" value="https://undangan.seraya.my.id/d/gina-joko"
+                                placeholder="Masukkan link undangan..." />
+                            <div class="field-hint">Contoh: https://undangan.seraya.my.id/d/nama-tujuan</div>
+                        </div>
+
+                        <div class="field-item" style="grid-column: 1 / -1;">
+                            <label class="field-label" for="templateInput">Draft Pesan Undangan</label>
+                            <textarea id="templateInput">Yth. Bapak/Ibu/Saudara/i
+[NAMA]
+Di Tempat
+-----------
+Dengan segala kerendahan hati, kami mengundang Bapak/Ibu/Saudara/i dan teman-teman untuk menghadiri acara,
+===========
+The Wedding of Gina & Joko
+===========
+Pada: Akad nikah
+📅 Tanggal: 06-06-2026
+⏰ Pukul: 09:00 - 10:00
+📍 Lokasi: Jl. Datuk Kuba Batu Bara, Dusun 1 Kwala Gunung (kp.durian)
+
+Pada: Resepsi
+📅 Tanggal: 06-06-2026
+⏰ Pukul: 10:00 - Selesai
+📍 Lokasi: Jl. Datuk Kuba Batu Bara, Dusun 1 Kwala Gunung (kp.durian)
+
+Pada: Ngunduh Mantu
+📅 Tanggal: 13-06-2026
+⏰ Pukul: 08:00 - Selesai
+📍 Lokasi: Dusun 1 Suka Makmur
+
+Link undangan bisa diakses lengkap di:
+[LINK]
+
+Merupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan untuk hadir di acara kami
+Mohon maaf perihal undangan hanya di bagikan melalui pesan ini
+Terima kasih banyak atas perhatiannya
+
+
+Note:
+Untuk mendapatkan hasil yg bagus, harap buka melalui google chrome terupdate dan matikan mode gelap dari hp</textarea>
+                            <div class="field-hint">
+                                Gunakan tag <b>[NAMA]</b> untuk nama tamu dan <b>[LINK]</b> untuk link undangan
+                                personal.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TABLE SECTION -->
+                <div class="card-glass reveal">
+                    <div class="toolbar">
+                        <div class="guest-counter">Total Tamu: <span id="totalGuest">0</span></div>
+                        <button class="btn-sort-mobile" onclick="toggleSort()" title="Urutkan">
+                            <span id="mobileSortIcon">
+                                <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="m3 16 4 4 4-4"></path><path d="M7 20V4"></path><path d="M11 4h10"></path><path d="M11 8h7"></path><path d="M11 12h4"></path>
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="toolbar-btns">
+                            <!-- Danger Action -->
+                            <button class="btn-danger-outline btn-small" onclick="clearNames()">
+                                <i data-lucide="refresh-cw"></i> Reset Data
+                            </button>
+
+                            <!-- Data Management -->
+                            <button class="btn-outline btn-small" onclick="triggerImportExcel()" title="Import dari Excel">
+                                <i data-lucide="file-up"></i> Import
+                            </button>
+                            <button class="btn-outline btn-small" onclick="exportExcel()" title="Export ke Excel">
+                                <i data-lucide="file-down"></i> Export
+                            </button>
+
+                            <!-- Primary Action (Moved to Far Right) -->
+                            <button class="btn-primary btn-small" onclick="openAddModal()">
+                                <i data-lucide="plus-circle"></i> Tambah Tamu
+                            </button>
+                        </div>
+                        <input type="file" id="excelFileInput" accept=".xlsx,.xls" style="display:none"
+                            onchange="importExcel(event)" />
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="custom-table">
+                            <thead>
+                                <tr>
+                                    <th class="no-col" onclick="toggleSort()" style="cursor: pointer; user-select: none; min-width: 90px;">
+                                        <div style="display: flex; align-items: center; gap: 6px;">
+                                            No <span id="sortIcon" style="display: inline-flex; color: var(--pink-deep);">
+                                                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    </th>
+                                    <th class="name-col">Nama</th>
+                                    <th class="link-col">Link Undangan</th>
+                                    <th class="chat-col">Preview Pesan</th>
+                                    <th class="action-col">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody">
+                                <!-- Table content generated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA SECTION (Optional for consistency) -->
+        <section id="cta" class="reveal">
+            <div class="cta-inner">
+                <div class="cta-label">✦ Seraya Studio</div>
+                <h2 class="cta-title">Siap Kirim Undanganmu?</h2>
+                <p class="cta-desc">Pastikan semua data sudah benar sebelum menyebarkan link ke tamu undangan.</p>
+                <div class="cta-btns">
+                    <a href="https://wa.me/6289679160870" class="btn-white">
+                        <i data-lucide="help-circle"></i> Butuh Bantuan?
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <a href="../index.html" class="logo">
+                    <img src="../assets/img/logo-utama.png" alt="Seraya Logo" loading="lazy" decoding="async">
+                </a>
+                <p>Undangan digital & fisik yang elegan untuk setiap momen berharga yang ingin kamu rayakan bersama
+                    orang-orang terkasih.</p>
+                <div class="social-links footer-social-links">
+                    <a href="https://instagram.com/seraya_creative" class="social-link ig" title="Instagram">
+                        <i data-lucide="instagram"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@seraya_creative" class="social-link tt" title="TikTok">
+                        <svg viewBox="0 0 24 24" fill="currentColor" style="width:20px; height:20px;">
+                            <path
+                                d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47V18.77a6.738 6.738 0 0 1-1.3 4.22 6.738 6.738 0 0 1-5.36 2.5 6.738 6.738 0 0 1-5.06-2.02 6.738 6.738 0 0 1-1.92-4.75c0-1.84.75-3.6 2.08-4.88a6.738 6.738 0 0 1 4.79-1.9c.14 0 .28 0 .42.02v4.09c-.14-.02-.28-.02-.42-.02-2.38 0-4.31 1.93-4.31 4.31 0 2.38 1.93 4.31 4.31 4.31 2.38 0 4.31-1.93 4.31-4.31V.02z" />
+                        </svg>
+                    </a>
+                    <a href="mailto:halo@seraya.my.id" class="social-link ml" title="Email">
+                        <i data-lucide="mail"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Layanan</h4>
+                <a href="../index.html#services">Undangan Digital</a>
+                <a href="../index.html#services">Undangan Fisik</a>
+                <a href="../index.html#addons">Add-ons</a>
+                <a href="../index.html#pricing">Paket Harga</a>
+            </div>
+            <div class="footer-col">
+                <h4>Paket</h4>
+                <a href="../index.html#pricing">Basic</a>
+                <a href="../index.html#pricing">Premium</a>
+                <a href="../index.html#pricing">Luxury</a>
+                <a href="../index.html#pricing">Motion</a>
+            </div>
+            <div class="footer-col">
+                <h4>Info</h4>
+                <a href="../index.html#faq">FAQ</a>
+                <a href="../index.html#how">Cara Pesan</a>
+                <a href="https://wa.me/6289679160870">Konsultasi</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 Seraya. Semua hak dilindungi.</span>
+            <span class="footer-tagline">Semua Kita Rayakan ✦</span>
+        </div>
+    </footer>
+
+    <!-- MODALS -->
+    <!-- Detail Modal -->
+    <div id="detailModal" class="modal-overlay" onclick="if (event.target === this) closeDetail()">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>Detail Tamu</h3>
+                <button class="modal-close" onclick="closeDetail()"><i data-lucide="x"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-info-row">
+                    <span class="modal-info-label">No</span>
+                    <span class="modal-info-value" id="detailNo"></span>
+                </div>
+                <div class="modal-info-row">
+                    <span class="modal-info-label">Nama Tamu</span>
+                    <span class="modal-info-value" id="detailName"></span>
+                </div>
+                <div class="modal-info-row">
+                    <span class="modal-info-label">Link Personal</span>
+                    <span class="modal-info-value" id="detailLink"></span>
+                </div>
+                <div class="field-item" style="margin-top: 20px;">
+                    <label class="field-label">Preview Pesan</label>
+                    <div class="chat-preview-box" id="detailChat" style="max-height: 200px;"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-outline btn-small" onclick="closeDetail()">Tutup</button>
+                <button class="btn-primary btn-small" id="detailWaButton">
+                    <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px; height:18px; margin-right: 8px;">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.148-.67-1.615-.918-2.214-.242-.581-.487-.502-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.432 5.631 1.434h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg> Sebar ke WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Modal -->
+    <div id="addModal" class="modal-overlay" onclick="if (event.target === this) closeAddModal()">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>Tambah Tamu</h3>
+                <button class="modal-close" onclick="closeAddModal()"><i data-lucide="x"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="field-item">
+                    <label class="field-label" for="addNameInput">Nama Tamu</label>
+                    <input id="addNameInput" type="text" placeholder="Ketik nama tamu baru..." />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-outline btn-small" onclick="closeAddModal()">Batal</button>
+                <button class="btn-primary btn-small" onclick="submitAdd()">
+                    <i data-lucide="plus"></i> Simpan
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal-overlay" onclick="if (event.target === this) closeEditModal()">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>Edit Tamu</h3>
+                <button class="modal-close" onclick="closeEditModal()"><i data-lucide="x"></i></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="editIndex">
+                <div class="field-item">
+                    <label class="field-label" for="editNameInput">Nama Tamu</label>
+                    <input id="editNameInput" type="text" placeholder="Ubah nama tamu..." />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-outline btn-small" onclick="closeEditModal()">Batal</button>
+                <button class="btn-primary btn-small" onclick="submitEdit()">
+                    <i data-lucide="save"></i> Simpan Perubahan
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Modal -->
+    <div id="deleteModal" class="modal-overlay" onclick="if (event.target === this) closeDeleteModal()">
+        <div class="modal-box" style="max-width: 400px;">
+            <div class="modal-header">
+                <h3 style="color: #be123c;">Konfirmasi Hapus</h3>
+                <button class="modal-close" onclick="closeDeleteModal()"><i data-lucide="x"></i></button>
+            </div>
+            <div class="modal-body" style="text-align: center; padding: 40px 24px;">
+                <input type="hidden" id="deleteIndex">
+                <div style="background: #fff1f2; width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                    <i data-lucide="trash-2" style="color: #e11d48; width: 32px; height: 32px;"></i>
+                </div>
+                <p style="color: var(--charcoal); font-weight: 500; margin-bottom: 8px;">Hapus tamu ini?</p>
+                <p style="font-size: 14px; color: #8a707d;" id="deleteNameText"></p>
+            </div>
+            <div class="modal-footer" style="background: white; border-top: 1px solid rgba(0,0,0,0.05);">
+                <button class="btn-outline btn-small" onclick="closeDeleteModal()">Batal</button>
+                <button class="btn-primary btn-small" style="background: #e11d48; border: none; box-shadow: 0 10px 20px rgba(225, 29, 72, 0.2);" onclick="submitDelete()">
+                    Ya, Hapus
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reset Modal -->
+    <div id="resetModal" class="modal-overlay" onclick="if (event.target === this) closeResetModal()">
+        <div class="modal-box" style="max-width: 400px;">
+            <div class="modal-header">
+                <h3 style="color: #be123c;">Konfirmasi Reset</h3>
+                <button class="modal-close" onclick="closeResetModal()"><i data-lucide="x"></i></button>
+            </div>
+            <div class="modal-body" style="text-align: center; padding: 40px 24px;">
+                <div style="background: #fff1f2; width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                    <i data-lucide="refresh-cw" style="color: #e11d48; width: 32px; height: 32px;"></i>
+                </div>
+                <p style="color: var(--charcoal); font-weight: 500; margin-bottom: 8px;">Bersihkan semua data?</p>
+                <p style="font-size: 14px; color: #8a707d;">Daftar tamu dan setelan domain akan dikembalikan ke awal.</p>
+            </div>
+            <div class="modal-footer" style="background: white; border-top: 1px solid rgba(0,0,0,0.05);">
+                <button class="btn-outline btn-small" onclick="closeResetModal()">Batal</button>
+                <button class="btn-primary btn-small" style="background: #e11d48; border: none; box-shadow: 0 10px 20px rgba(225, 29, 72, 0.2);" onclick="submitReset()">
+                    Ya, Reset Semua
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+    <script src="script.js"></script>
+
+    <!-- MAIN JS FOR ANIMATIONS -->
+    <script src="../assets/js/main.js" defer></script>
+</body>
+
+</html>
